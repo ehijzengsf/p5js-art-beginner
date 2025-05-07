@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a class='active' href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Interactie</h1>
+
+<p>In dit hoofdstuk ga je leren hoe je in p5.js sketches kan maken die reageren op input van de gebruiker.</p>
+
+<h2 id="mouse-position">Muispositie</h2>
+
+<p>p5.js heeft twee heel speciale variabelen, <code>mouseX</code> en <code>mouseY</code>, die <em>de X en Y coordinaten van de muis cursor</em> bevatten van het huidige frame. Als je bedenkt dat de code in <code>draw()</code> continu draait en heel snel: tot zestig keer per seconde. Een stukje code van p5.js dat deel uitmaakt van de library roept continu deze functie aan en iedere keer dat p5.js dat doet wordt de waarde van de <code>mouseX</code> en de <code>mouseY</code> variabelen geupdated met de huidige positie van de cursor op het scherm. De twee variabelen samen maken het heel makkelijk om je sketch te laten reageren op muisbewegingen van de gebruiker. </p>
+
+<p>Hier een simpel voorbeeld dat een cirkel tekent op de positie van de muisaanwijzer: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  noFill();
+  stroke(255);
+  strokeWeight(8);
+}
+function draw() {
+  background(50);
+  circle(mouseX, mouseY, 45);
+}
+</script>
+
+<p>Natuurlijk kan je <code>mouseX</code> en <code>mouseY</code> niet alleen gebruiken voor de <em>positie</em> van de vormen die je tekent, maar ook voor andere eigenschappen. Hier is een sketch die de <code>mouseX</code> waarde gebruikt voor de lijndikte en de <code>mouseY</code> waarde voor de grootte van de cirkel: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  noFill();
+  stroke(255);
+}
+function draw() {
+  background(50);
+  strokeWeight(mouseX / 10);
+  circle(200, 200, mouseY);
+}
+</script>
+
+<p>Een klassieke voorbeeld sketch van p5.js is om de <code>background()</code> functie in <code>draw()</code> weg te laten, terwijl je de muispositie variabelen gebruikt. Nu heb je eigenlijk de basis van een tekenprogramma:</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  background(50);
+}
+function draw() { 
+  circle(mouseX, mouseY, 30);
+}
+</script>
+
+<p>We kunnen een wat onvoorspelbaarder tekenprogramma maken door wat veranderingen in tijd in te voeren en wat andere kleine aanpassingen:</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let greenVal = 0;
+function setup() {
+  createCanvas(400, 400);
+  noFill();
+  background(50);
+}
+function draw() {
+  stroke(255, (sin(greenVal)+1)/2*255, 255);
+  strokeWeight(3);
+  circle(mouseX, 400-mouseY, 45);
+  greenVal += 0.05;
+}
+</script>
+
+<h2 id="mouse-pressed">Muisklik</h2>
+
+<p>p5.js heeft een speciale ingebouwde variabele genaamd <code>mouseIsPressed</code> waar de waarde <code>true</code> is als de gebruiker de muisknop ingedrukt houdt en <code>false</code> als dat niet zo is. Je kan dit gebruiken om je sketch verschillende dingen te laten doen afhankelijk van of de gebruiker de muisknop ingedrukt houdt of niet.</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  background("#3F2A2B");
+  stroke("#3F2A2B");
+}
+function draw() { 
+  if (mouseIsPressed) {
+    fill("#FF4A1C");
+  }
+  else {
+    fill("#81523F");
+  }
+  circle(mouseX, mouseY, 30);
+}
+</script>
+
+<h2 id="mouse-speed">Muissnelheid</h2>
+
+<p>Naast <code>mouseX</code> en <code>mouseY</code> zijn er nog twee ingebouwde variabelen voor de muispositie, namelijk <code>pmouseX</code> en <code>pmouseY</code>. De waarde van de <code>pmouseX</code> en de <code>pmouseY</code> variabelen worden ook ieder frame geupdated, niet met de huidige muispositie maar met de <em>vorige muispositie</em>, dwz. de X en Y coördinaten van de muis in het voorlaatste frame. Nu kunnen we door de huidige muispositie te vergelijken met de vorige muispositie de <em>snelheid</em> meten waarmee de muis op dat moment over het scherm beweegt. Hiervoor gebruiken we deze code: </p>
+
+<pre><code>let speed = abs(mouseX - pmouseX) + abs(mouseY - pmouseY)</code></pre>
+
+<p>We trekken de vorige x- en y-positie van de muis af van de huidige x- en y-positie en nemen daarvan mbv. <code>abs()</code> de absolute waarde. Zo zorgen we dat de variabele <code>speed</code> altijd een positief getal is. Dit biedt weer nieuwe mogelijkheden voor je interactieve sketch. In het volgende voorbeeld tekenen we grotere of kleinere cirkels afhankelijk van de muissnelheid: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  background("#3F2A2B");
+  stroke("#3F2A2B");
+}
+function draw() { 
+  if (mouseIsPressed) {
+    fill("#FF4A1C");
+  }
+  else {
+    fill("#81523F");
+  }
+  let speed = abs(mouseX - pmouseX) + abs(mouseY - pmouseY);
+  circle(mouseX, mouseY, speed);
+}
+</script>
+
+<p>We kunnen deze sketch nog wat verder verfijnen door de beweging wat vloeiender te maken met behulp van <code>lerp()</code>. Deze functie berekent een getal tussen twee getallen afhankelijk van een stapwaarde tussen 0 en 1. </p>
+
+<pre><code>lerp(100, 200, 0.5) // 150
+lerp(100, 200, 0.1) // 110
+lerp(100, 200, 0.9) // 190</code></pre>
+
+<p>Door globale variabelen te gebruiken voor de x- en y-positie en deze te "lerpen" naar de muispositie krijgen we een meer vloeiendere animatie: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let x = 0, y = 0;
+function setup() {
+  createCanvas(400, 400);
+  background("#3F2A2B");
+  stroke("#3F2A2B");
+}
+function draw() { 
+  if (mouseIsPressed) {
+    fill("#FF4A1C");
+  }
+  else {
+    fill("#81523F");
+  }
+  let speed = abs(mouseX - pmouseX) + abs(mouseY - pmouseY);
+  speed = constrain(speed, 10, 100);
+  x = lerp(x, mouseX, 0.2);
+  y = lerp(y, mouseY, 0.2);
+  circle(x, y, speed);
+}
+</script>
+
+<p>Ook hebben we hier de <code>constrain()</code> functie gebruikt. Deze functie zorgt dat een getal tussen een minimum en maximumwaarde blijft. </p>
+
+<pre><code>constrain(92, 10, 100); // 92
+constrain(4, 10, 100); // 10
+constrain(120, 10, 100); // 100</code></pre>
+
+<p>In bovenstaand voorbeeld kan de diameter van de cirkel dus nooit kleiner dan 10 pixels zijn en nooit groter dan 100 pixels.</p>
+
+<h2 id="interaction-and-objects">Interactie en objecten</h2>
+
+<p>Laten we nu eens kijken hoe we meerdere vormen interactief kunnen maken. Het volgende voorbeeld gebruikt de ingebouwde functie <code>dist()</code> om de afstand tussen de objecten en de muis te meten - <a href="https://p5js.org/reference/#/p5/dist" target="_blank">p5js.org/reference/#/p5/dist</a>. De vulkleur is vervolgens afhankelijk gemaakt van de afstand. Hoe dichterbij hoe helderder de kleur van de cirkel: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let objects = [];
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  for (let i = 0; i < 400; i++) {
+    let obj = new ColorCircle(10+(i%20)*20, 10+floor(i/20)*20, 16);
+    objects.push(obj);
+  }
+}
+function draw() {
+  background(0);
+  for (let obj of objects)
+    obj.draw();
+}
+function ColorCircle(x, y, size) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.draw = function() {
+    let d = dist(this.x, this.y, mouseX, mouseY);
+    fill(255 - d*2, 128 - d, 0);
+    circle(
+      this.x,
+      this.y,
+      this.size
+    );
+  };
+}
+</script>
+
+<p>In het volgende voorbeeld maken we de grootte van de cirkels afhankelijk van de afstand tot de muis: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let objects = [];
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  for (let i = 0; i < 400; i++) {
+    let obj = new GrowingCircle(10+(i%20)*20, 10+floor(i/20)*20, 16);
+    objects.push(obj);
+  }
+}
+function draw() {
+  background(0);
+  for (let obj of objects)
+    obj.draw();
+}
+function GrowingCircle(x, y, size) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.draw = function() {
+    let d = dist(this.x, this.y, mouseX, mouseY);
+    fill(255, 128, 0);
+    circle(
+      this.x,
+      this.y,
+      this.size - d / 10
+    );
+  };
+}
+</script>
+
+<p>En nog een wat ingewikkelder voorbeeld. Hier passen we de rotatie van de rechthoeken in een grid aan aan de muispositie. Daarvoor moeten we wel eerst de hoek ten opzichte van de muis berekenen mbv. <code>atan2</code> - <a href="https://p5js.org/reference/#/p5/atan2" target="_blank">p5js.org/reference/#/p5/atan2</a>. En omdat we gaan roteren gebruiken we <code>translate()</code>, <code>push()</code> en <code>pop()</code>. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let objects = [];
+let x = 0, y = 0;
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  fill(255, 128, 0);
+  rectMode(CENTER);
+  for (let i = 0; i < 400; i++) {
+    let obj = new RotatingRect(10+(i%20)*20, 10+floor(i/20)*20, 20);
+    objects.push(obj);
+  }
+}
+function draw() {
+  background(0);
+  for (let obj of objects)
+    obj.draw();
+}
+function RotatingRect(x, y, size) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.angle = 0;
+  this.draw = function() {
+    x = lerp(x, mouseX, 0.1);
+    y = lerp(y, mouseY, 0.1);
+    this.angle = PI - atan2(x - this.x, y - this.y);
+    push();
+    translate(this.x, this.y);
+    rotate(this.angle);
+    rect(0, 0, this.size, this.size/10);
+    pop();
+  };
+}
+</script>
+
+      </article>
+    </main>
+      
+  <footer class="footer">
+  <small>
+    &copy; <time datetime="2022-04-23T19:20:00-04:00">2022</time>. De tekst van deze site is onder een
+     <a rel="license"
+        href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+        Commons Attribution-NonCommercial 4.0 International License</a>. Enkele delen van deze tekst zijn overgenomen uit de vertaling door <a href="https://www.visualeditor.nl/">Marijn van der Meer</a> van een tutorial van <a href="https://creative-coding.decontextualize.com/">Allison Parrish</a> en door mijzelf vertaalde tutorials van <a href="https://happycoding.io/tutorials/p5js/">Happy Coding</a>. 
+        Bovendien zijn de code voorbeelden onder een: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 licentie</a>.
+        Deze pagina gebruikt de P5-widget, die <a href="https://toolness.github.io/p5.js-widget/"> hier </a> te vinden is. <br><br>
+  </small>
+</footer>  
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

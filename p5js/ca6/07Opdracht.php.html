@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a class='active' href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Arrays en objecten</h1><br><br>
+
+<p>In deze opdrachten ga je met arrays en objecten werken in de <a href="https://editor.p5js.org/" target="_blank">p5 editor</a>. Geef elke opdracht een naam en bewaar ze. </p>
+
+<h2>Opdrachten</h2>
+<ul>
+  <li>
+    <h3>Opdracht 1</h3>
+    <img src="assets/eyes1.jpg" />
+    <p>Kopiëer eerst onderstaande code en plak in de editor. </p>
+
+    <pre><code>let eyes = [];
+let colors = ["#3b1c02","#556131","#6990b7","#7c867b","#6f3716"];
+
+function setup() {
+  createCanvas(720, 400);
+}
+
+function draw() {
+  background(0);
+}
+
+function Eye(x, y, size, color) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.color = color;
+  this.angle = 0;
+
+  this.draw = function(mx, my) {
+    // berekent de hoek tussen dit object en de muispositie
+    this.angle = atan2(my - this.y, mx - this.x);
+    
+    push();
+    translate(this.x, this.y);
+    fill(255);
+    stroke(0);
+    ellipse(0, 0, this.size, this.size);
+    rotate(this.angle);
+    noStroke();
+    fill(this.color);
+    ellipse(this.size / 6, 0, this.size / 1.5, this.size / 1.5);
+    fill("#000000");
+    ellipse(this.size / 4, 0, this.size / 4, this.size / 4);
+    pop();
+  };
+}
+    </code></pre>
+
+    <p>In deze opdracht ga je de gegeven object functie <code>Eye</code> gebruiken om een aantal ogen te tekenen dat je muis volgt. </p>
+    <ul>
+      <li>Maak in de <code>setup</code> functie een aantal objecten aan van de gegeven functie <code>Eye</code>. Geef de functie willekeurige waarden mee voor de x- en y-positie, diameter en kies voor de kleur een willekeurige waarde uit de colors array. Voeg de aangemaakte objecten toe aan de eyes array. </li>
+      <li>Vervolgens roep je in de <code>draw</code> functie voor elk object diens eigen draw functie aan, met daarin de x- en y-positie van de muis. </li>
+    </ul><br>
+  </li>
+
+  <li>
+    <h3>Opdracht 2</h3>
+    <img src="assets/squares1.gif" />
+    <p>Kopiëer eerst onderstaande code en plak in de editor. </p>
+
+    <pre><code>let border = 56;
+let squares = [];
+
+function setup() {
+  createCanvas(400, 400);
+  rectMode(CENTER);
+  // objecten aanmaken en toevoegen aan squares array
+  let size = 32;
+  for (let x = border; x <= width - border; x += size) {
+    for (let y = border; y <= height - border; y += size) {
+      let offset = (y - border) / 16;
+      let clr = 240 - offset * 10 + random(-10,10);
+      let sq = new MovingSquare(
+        x + random(-offset, offset), 
+        y + random(-offset, offset), 
+        size,
+        clr
+      );
+      squares.push(sq);
+    }
+  }
+}
+
+function draw() {
+  clear();
+  // roept de draw functie in elk MovingSquare object aan
+  for (let square of squares)
+    square.draw();
+}
+    </code></pre>
+
+    <p>Deze code werkt nog niet - <em>ReferenceError: MovingSquare is not defined</em>. In deze opdracht ga je zelf een object functie <code>MovingSquare</code> aanmaken en daarin code schrijven om elk vierkanje individueel te animeren. De vierkantjes moeten van boven naar beneden toe steeds harder gaan trillen. </p>
+    <ul> 
+      <li>Schrijf de functie <code>MovingSquare</code> met als parameters <code>x</code>, <code>y</code>, <code>size</code></li> en <code>color</code>. </li>
+      <li>Schrijf hierin de functie <code>draw()</code> om je vierkant te tekenen. Gebruik de parameters om het vierkant op de juiste positie, in de juiste grootte en kleur te tekenen. </li>
+      <li>De x- en y-positie moet nu telkens variëren, en steeds meer naarmate de y-positie hoger wordt. Gebruik hiervoor een variable <code>v</code> en <code>random(-v, v)</code>. </li>
+    </ul><br>
+  </li>
+</ul>
+
+<h2 id="sharing-your-work">Inleveren</h2>
+
+<p>Voor elke opdracht selecteer je <code>Share</code> in het <code>File</code> menu van de webeditor. Kies <code>Edit</code> en deel de link met je docent.</p><br><br>
+
+      </article>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

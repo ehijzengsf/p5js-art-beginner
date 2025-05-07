@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a class='active' href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Arrays en transformaties</h1>
+
+<p>In dit hoofdstuk leer je werken met <code>arrays</code> (lijsten). Ook ga je leren hoe je <em>transformaties</em> kan gebruiken. Dat is een handige en elegante manier om te bepalen waar en hoe vormen worden getekend op het scherm. </p><br>
+
+<h2 id="arrays">Arrays</h2>
+
+<p>JavaScript heeft (net als alle programmeertalen) een bepaalde <em>datastructuur</em> om gegevens op te slaan in een lijst. In JavaScript heet dat een <em>array</em>.</p>
+
+<p>Een <em>array</em> is niks anders dan een hele lijst van <em>variabelen</em> achter elkaar. Stel dat je een aantal standaardmaten voor je vormen wilt gebruiken, dan kan je wel een heleboel variabelen maken (size1, size2, size3, etc) maar dat is erg onhandig. Je kan al die waarden beter opslaan in een array. De gegevens in een array noemen we <em>elementen</em>.</p>
+
+<p><em>Hoe werkt dat dan?</em></p>
+
+<p>Zo ziet een lege array eruit:</p>
+
+<pre><code>let sizes = [];</code></pre>
+
+<p>Elementen toevoegen:</p>
+
+<pre><code>sizes.push(5);
+sizes.push(15);
+sizes.push(10);</code></pre>
+
+<p>Maar je kunt de waarden er ook meteen in stoppen:</p>
+
+<pre><code>let sizes = [5, 15, 10, 25, 20];</code></pre>
+
+<p>De array bestaat nu uit 5 elementen: 5, 15 ,10, 25 en 20, in die volgorde. De positie van het element in de array noemen we de <em>index</em>. En computers beginnen te tellen bij 0, dus 5 is het 0e element, 15 het 1e, 10 het 2e, etc. Dit heet <em>zero-based</em>. Gebaseerd op nul betekent dat het <em>eerste</em> element van een array een index van <code>0</code> heeft in JavaScript. Dus als je het eerste element uit het array <code>sizes</code> wilt selecteren, moet je <code>sizes[0]</code> schrijven. En om het laatste element uit een array van vijf elementen te selecteren moet je <code>sizes[4]</code> schrijven (en dus niet <code>sizes[5]</code>). </p>
+
+<p>De reden voor deze rare gewoonte ligt in de historie van het programmeren <a href="https://en.wikipedia.org/wiki/Zero-based_numbering">Wikipedia heeft een goede uitleg over de geschiedenis van het nul-indexen</a>. </p>
+
+<p>Elementen selecteren in de array doe je dus mbv. de index:</p>
+
+<pre><code>sizes[0];  // 5
+sizes[3];  // 25</code></pre>
+
+<p>De lengte van de array:</p>
+
+<pre><code>sizes.length();  // 5</code></pre>
+
+<p>Loopen door de array:</p>
+
+<pre><code>for (let i = 0; i < sizes.length(); i++) {
+console.log(sizes[i]);
+}</code></pre>
+
+<p>Elementen verwijderen uit een array kan ook, op verschillende manieren. </p>
+
+<p>Laatste element verwijderen:</p>
+
+<pre><code>sizes.pop();  // 20
+console.log(sizes);  // [5, 15, 10, 25]</code></pre>
+
+<p>Eerste element verwijderen:</p>
+
+<pre><code>sizes.shift();  // 5
+console.log(sizes);  // [15, 10, 25]</code></pre>
+
+<p>Een element verwijderen met de index:</p>
+
+<pre><code>sizes.splice(2, 1);  // verwijdert 1 element op index 2
+console.log(sizes);  // [15, 10]</code></pre>
+
+<p>Goed, dat is nogal een hoop informatie in één keer. Laten we eens kijken hoe we een array in p5.js kunnen gebruiken, dan wordt het allemaal wat duidelijker. We nemen weer even het vorige voorbeeld met cirkels. Nu gaan we de grootte van de cirkels instellen mbv. een array:</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let xpos = 80, ypos = 140, step = 30;
+let sizes = [5, 15, 10, 25, 20];
+
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+
+  for (let j = 0; j < 5; j++) {
+    let size = sizes[j];
+    for (let i = 0; i < 9; i++) {
+      ellipse(xpos+(step*i), ypos+(step*j), size, size);
+    }
+  }
+}
+</script>
+
+<p>Maar we kunnen ook de <code>random()</code> functie gebruiken om willekeurig een element uit een array te selecteren. In plaats van een getal als parameter kunnen we eenvoudigweg de array als parameter invoeren:</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let xpos = 80, ypos = 80, step = 30;
+let sizes = [5, 15, 10, 25, 20];
+
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+
+  for (let j = 0; j < 9; j++) {
+    for (let i = 0; i < 9; i++) {
+      let size = random(sizes);
+      ellipse(xpos+(step*i), ypos+(step*j), size, size);
+    }
+  }
+}
+</script>
+
+<p>Of willekeurig de breedte en hoogte van de ellipsen variëren:</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let xpos = 80, ypos = 80, step = 30;
+let sizes = [5, 15, 10, 25, 20];
+
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  frameRate(1);
+}
+
+function draw() {
+  background(255);
+  fill(50);
+
+  for (let j = 0; j < 9; j++) {
+    for (let i = 0; i < 9; i++) {
+      ellipse(xpos+(step*i), ypos+(step*j), random(sizes), random(sizes));
+    }
+  }
+}
+</script>
+
+<p>Als je een kleurenpalet wilt gebruiken met een aantal door jou vastgestelde kleuren is een array in combinatie met random ook heel handig:</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let xpos = 80, ypos = 80, step = 30;
+let sizes = [5, 15, 10, 25, 20];
+let colors = ['#37123C','#71677C','#A99F96','#DDA77B','#945D5E'];
+
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  frameRate(2);
+}
+
+function draw() {
+  background(200);
+
+  for (let j = 0; j < 9; j++) {
+    for (let i = 0; i < 9; i++) {
+      fill(random(colors));
+      let size = random(sizes);
+      ellipse(xpos+(step*i), ypos+(step*j), size, size);
+    }
+  }
+}
+</script>
+
+<h2 id="translation">Translate</h2>
+
+<p>Om vormen op een bepaalde plek op het scherm te tekenen kunnen we een "offset" variabele gebruiken. Hier is bijvoorbeeld een sketch die een smiley tekent waarbij je de positie van het gezicht kan veranderen door de <code>xoffset</code> en <code>yoffset</code> variabelen aan te passen (probeer maar eens):</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let xoffset = 100;
+let yoffset = 120;
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+  strokeWeight(4);
+}
+function draw() {
+  // teken een smiley
+  fill('#e9c517');
+  circle(xoffset, yoffset, 100);
+  fill(0);
+  for (let i = 0; i < 2; i++) {
+    circle(xoffset-20 + i * 40, yoffset-10, 16);
+  }
+  noFill();
+  arc(xoffset, yoffset, 60, 60, 0.25*PI, 0.75*PI);
+}
+</script>
+<p>Dit is op zich prima, maar er staat een hoop herhaling in de code: de namen <code>xoffset</code> en <code>yoffset</code> worden een aantal keer opgeschreven.</p>
+
+<p>Je zal nu wel doorhebben dat veel programmeurs een <em>hekel</em> hebben aan het telkens opnieuw hetzelfde typen. Goede programmeurs zijn lui, en daarom verzinnen zij altijd manieren om herhaling te omzeilen. De programmeurs van p5js hebben voor dit geval de <code>translate()</code> functie bedacht.</p>
+
+<p>Voordat we precies gaan uitleggen hoe de <code>translate()</code> werkt, is het misschien behulpzaam om de functie al een keer in actie te zien. Hier is hetzelfde voorbeeld als hierboven, maar nu herschreven met de <code>translate()</code> functie:</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+  strokeWeight(4);
+}
+function draw() {
+  translate(100, 120);
+  // teken een smiley
+  fill('#e9c517');
+  circle(0, 0, 100);
+  fill(0);
+  for (let i = 0; i < 2; i++) {
+    circle(-20 + i * 40, -10, 16);
+  }
+  noFill();
+  arc(0, 0, 60, 60, 0.25*PI, 0.75*PI);
+}
+</script>
+
+<p>Wat gebeurt er hier? In het kort: de <code>translate()</code> functie verandert het nulpunt van de coördinaten. Voor iedere functie die iets tekent na de <code>translate()</code> functie, is de positie van <code>0, 0</code> op de coördinaten die je als argumenten in de <code>translate()</code> functie hebt ingevoerd.</p>
+
+<p>Het grote voordeel van het <code>translate()</code> commando is dat je eerst een aantal vormen kan tekenen zonder je druk te maken over de uiteindelijke positie die ze in moeten nemen. Je kan dat stukje code heel simpel kopiëren naar een andere sketch zolang je de <code>translate()</code> gebruikt om de positie te veranderen hoef je verder niks aan de code te veranderen.</p>
+
+<p>Hier een versie van de bovenstaande sketch waarbij de smiley de muiscursor volgt. Om dit te laten werken is het niet nodig om in iedere vorm (hoofd, twee ogen en een mond) daar de <code>mouseX</code> en <code>mouseY</code> functie toe te voegen in ieder vorm; je hoeft alleen de <code>translate()</code> functie te veranderen.</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  strokeWeight(4);
+}
+function draw() {
+  clear();
+  translate(mouseX, mouseY);
+  // teken een smiley
+  fill('#e9c517');
+  circle(0, 0, 100);
+  fill(0);
+  for (let i = 0; i < 2; i++) {
+    circle(-20 + i * 40, -10, 16);
+  }
+  noFill();
+  arc(0, 0, 60, 60, 0.25*PI, 0.75*PI);
+}
+</script>
+
+<h2 id="translates-accumulate">Translate telt op!</h2>
+
+<p>Stel nu dat je <em>twee</em> smileys wilt tekenen. Eentje die de muis volgt en eentje die stil blijft staan in de linkerbovenhoek. Je eerste poging zal er misschien zo uitzien:</p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  strokeWeight(4);
+}
+function draw() {
+  clear();
+
+  // volg de muis
+  translate(mouseX, mouseY);
+  // teken een smiley
+  fill('#e9c517');
+  circle(0, 0, 100);
+  fill(0);
+  for (let i = 0; i < 2; i++) {
+    circle(-20 + i * 40, -10, 16);
+  }
+  noFill();
+  arc(0, 0, 60, 60, 0.25*PI, 0.75*PI);
+
+  // linkerbovenhoek??
+  translate(50, 50);
+  // teken een smiley!
+  fill('#e9c517');
+  circle(0, 0, 100);
+  fill(0);
+  for (let i = 0; i < 2; i++) {
+    circle(-20 + i * 40, -10, 16);
+  }
+  noFill();
+  arc(0, 0, 60, 60, 0.25*PI, 0.75*PI);
+}
+</script>
+<p>Hm dat gaat niet goed. Ze volgen <em>allebei</em> de muis. Hoezo?</p>
+
+<p>Dit is het probleem: <em>transformaties tellen op</em>. De eerste aanroep voor <code>translate()</code>in bovenstaand voorbeeld verplaatst het nulpunt naar de positie van de muis. De tweede aanroep herstelt het nulpunt niet naar <code>50, 50</code>, maar verplaatst het nulpunt naar <code>50, 50</code> <em>relatief van het bestaande nulpunt</em>, dat is hier dus de muispositie!</p>
+
+<h2 id="pushing-and-popping-the-matrix">Het Pushen en poppen van de matrix</h2>
+
+<p>Ondanks dat ik het bovenstaande voorbeeld expres heb laten mislukken is dit gedrag eigenlijk heel fijn. (Om te zien waarom probeer eens te bedenken hoe je het gedrag van de bovenstaande sketch zou moeten uitvoeren als je dat zou willen. Met andere woorden probeer te bedenken hoe je anders twee gezichten zou willen tekenen die de muis volgen waarbij eentje net naast de andere staat als de <code>translate()</code> functie het nulpunt elke keer helemaal opnieuw zou instellen.)</p>
+
+<p>Maar het zou wel handig zijn om transformaties te kunnen <em>isoleren</em>, zodat een deel van de code zijn eigen nulpunt heeft en een ander deel van de code een ander nulpunt ergens anders. Je doet dit door gebruik te maken van twee verschillende functies: de <code>push()</code> en <code>pop()</code>. Let wel, dit zijn andere <code>push()</code> en <code>pop()</code> functies dan die voor een array. Bij een array gebruiken we ze om elementen toe te voegen en te verwijderen uit een lijst. Maar nu gebruiken we <code>push()</code> om de <em>huidige staat van alle transformaties in ons programma tijdelijk te bewaren</em>, en <code>pop()</code> om <em>weer terug te keren naar die bewaarde staat</em>.</p>
+
+<p>De <code>push()</code> functie zegt eigenlijk, “He, p5.js, alle <code>translate()</code> functies tot hier moet je even onthouden, zodat ik straks vanaf dat punt weer verder kan." De <code>pop()</code> functie zegt, “He, p5.js. Weet je nog dat ik je vroeg om die translates te onthouden? Ga daar maar weer naar terug." </p>
+
+<p>Om dit te demonstreren is hier een voorbeeld van een stukje hierboven, maar nu herschreven zodat het doet wat we eigenlijk wilden: de ene smiley volgt de muis en de andere blijft in de linkerbovenhoek stil staan: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  strokeWeight(4);
+}
+function draw() {
+  clear();
+  
+  // volg de muis
+  push();
+  translate(mouseX, mouseY);
+  // teken een smiley
+  fill('#e9c517');
+  circle(0, 0, 100);
+  fill(0);
+  for (let i = 0; i < 2; i++) {
+    circle(-20 + i * 40, -10, 16);
+  }
+  noFill();
+  arc(0, 0, 60, 60, 0.25*PI, 0.75*PI);
+  pop();
+
+  // linkerbovenhoek
+  translate(50, 50);
+  // teken een smiley!
+  fill('#e9c517');
+  circle(0, 0, 100);
+  fill(0);
+  for (let i = 0; i < 2; i++) {
+    circle(-20 + i * 40, -10, 16);
+  }
+  noFill();
+  arc(0, 0, 60, 60, 0.25*PI, 0.75*PI);
+}
+</script>
+
+<h2 id="scale-and-rotate">Schalen en roteren</h2>
+
+<p>De functies <code>scale()</code> en <code>rotate()</code> zijn net als <code>translate()</code> <em>transformaties</em>, en die tellen dus ook op. Bovendien wordt altijd geschaald en geroteerd om het nulpunt, dus <code>scale()</code> en <code>rotate()</code> gebruik je altijd in <em>combinatie</em> met <code>translate()</code>. En dus ook samen met <code>push()</code> en <code>pop()</code>. Om dat te demonstreren gaan we proberen een aantal rechthoeken onder elkaar te tekenen met dezelfde draaiïng. Als we dat zonder translate proberen: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="384">
+function setup() {
+  createCanvas(400, 300);
+  noLoop();
+  rectMode(CENTER);
+  angleMode(DEGREES);
+  fill('#e9c517');
+}
+function draw() {
+  for (let i = 0; i < 10; i++) {
+    rotate(5);
+    rect(width/2, 20 + i * 20, 300, 8);
+  }
+}
+</script>
+
+<p>Voor het gemak heb ik de <code>rectMode</code> op CENTER ingesteld en de <code>angleMode</code> op DEGREES (deze staat standaard ingesteld op RADIANS, maar de meeste mensen denken in graden). Maar wat gebeurt hier nu? Als eerste zien we dat alle rechthoeken geroteerd worden rond het nulpunt van de sketch ipv. rond hun eigen middelpunt. En ten tweede roteren ze telkens 5 graden meer omdat de <code>rotate()</code> functie optelt. Laten we eerst eens proberen om translate toe te passen, zodat ze rond hun eigen middelpunt roteren: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="384">
+function setup() {
+  createCanvas(400, 300);
+  noLoop();
+  rectMode(CENTER);
+  angleMode(DEGREES);
+  fill('#e9c517');
+}
+function draw() {
+  for (let i = 0; i < 10; i++) {
+    translate(width/2, 20 + i * 20);
+    rotate(5);
+    rect(0, 0, 300, 8);
+  }
+}
+</script>
+
+<p>Mja, de rechthoeken roteren nu wel rond hun eigen middelpunt, maar <code>translate()</code> en <code>rotate()</code> tellen nog steeds op waardoor ze uit beeld verdwijnen. Dat gaan we oplossen met <code>push()</code> en <code>pop()</code>: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="384">
+function setup() {
+  createCanvas(400, 300);
+  noLoop();
+  rectMode(CENTER);
+  angleMode(DEGREES);
+  fill('#e9c517');
+}
+function draw() {
+  for (let i = 0; i < 10; i++) {
+    push();
+    translate(width/2, 20 + i * 20);
+    rotate(5);
+    rect(0, 0, 300, 8);
+    pop();
+  }
+}
+</script>
+
+<p>Op deze manier kunnen we nu ook een raster van vormen tekenen met elk hun eigen rotatie: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+  rectMode(CENTER);
+  angleMode(DEGREES);
+  fill('#e9c517');
+}
+function draw() {
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      push();
+      translate(56 + i * 32, 56 + j * 32);
+      rotate(random(-j * 5, j * 5));
+      rect(0, 0, 32, 32);
+      pop();
+    }
+  }
+}
+</script>
+
+      </article>
+    </main>
+      
+  <footer class="footer">
+  <small>
+    &copy; <time datetime="2022-04-23T19:20:00-04:00">2022</time>. De tekst van deze site is onder een
+     <a rel="license"
+        href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+        Commons Attribution-NonCommercial 4.0 International License</a>. Enkele delen van deze tekst zijn overgenomen uit de vertaling door <a href="https://www.visualeditor.nl/">Marijn van der Meer</a> van een tutorial van <a href="https://creative-coding.decontextualize.com/">Allison Parrish</a> en door mijzelf vertaalde tutorials van <a href="https://happycoding.io/tutorials/p5js/">Happy Coding</a>. 
+        Bovendien zijn de code voorbeelden onder een: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 licentie</a>.
+        Deze pagina gebruikt de P5-widget, die <a href="https://toolness.github.io/p5.js-widget/"> hier </a> te vinden is. <br><br>
+  </small>
+</footer>  
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

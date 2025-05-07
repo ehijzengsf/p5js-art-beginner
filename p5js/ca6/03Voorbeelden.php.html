@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a class='active' href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Voorbeelden aanpassen</h1><br><br>
+
+<div class="imagecontainer">
+  <img src="assets/random.jpg" />
+  <img src="assets/jitter.jpg" />
+</div>
+
+<p>In deze les ga je bestaande voorbeelden bekijken en aanpassen. Bij elk voorbeeld horen een aantal opdrachtjes die je moet doen, en je mag daarnaast ook zelf dingen veranderen. Het gaat erom dat je leert hoe de code werkt door ermee te experimenteren. Zoals we al eerder hebben gezien hoef je nog niet alle code te snappen om ermee te kunnen werken. Open eerst de <a href="https://editor.p5js.org/" target="_blank">p5 editor</a> en log weer in met je <em>email adres</em> en <em>wachtwoord</em> zodat je je werk kunt opslaan. </p>
+
+<h2>Voorbeelden</h2>
+<ol>
+  <li>
+    <pre><code>function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    fill(0);
+  } else {
+    fill(255);
+  }
+  ellipse(mouseX, mouseY, 80, 80);
+}</code></pre>
+    <ul>
+      <li>Probeer eerst even te bedenken wat bovenstaande code doet. Kopiëer dan de code, plak in de editor en probeer het uit. Doet het wat je verwachtte?</li>
+      <li>Verander de vulkleur wanneer de muisknop niet ingedrukt is.</li>
+      <li>Teken een andere vorm (bijv. rect) als de muisknop ingedrukt is.</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://p5js.org/examples/math-random.html" target="_blank">https://p5js.org/examples/math-random.html</a><br>Kopiëer de code uit dit voorbeeld en plak in de editor.</p>
+    <ul>
+      <li>Laat de lijnen sneller verspringen.</li>
+      <li>Zorg dat een random RGB kleur wordt gekozen ipv. een grijswaarde.</li>
+      <li>Teken minder maar dikkere lijnen per keer.</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://p5js.org/examples/hello-p5-interactivity-1.html" target="_blank">https://p5js.org/examples/hello-p5-interactivity-1.html</a><br>Kopiëer wederom de code uit dit voorbeeld en plak het in de editor.</p>
+    <ul>
+      <li>Zorg dat de kleur verandert als je buiten de cirkel klikt ipv. erin.</li>
+      <li>Maak de cirkel groter en zorg dat dit nog steeds werkt, controleer door dichtbij de rand van de cirkel te klikken.</li>
+      <li>Maak de code efficiënter door de ingebouwde variabelen <code>width</code> en <code>height</code> te gebruiken in de <code>ellipse()</code> en <code>dist()</code> functies.</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://p5js.org/examples/objects-array-of-objects.html" target="_blank">https://p5js.org/examples/objects-array-of-objects.html</a></p>
+    <ul>
+      <li>Wijzig het aantal cirkels dat getekend wordt.</li>
+      <li>Verander de random grootte van de cirkels.</li>
+      <li>Pas de snelheid van de cirkels aan.</li>
+      <li>Maak de snelheid van de cirkels afhankelijk van hun diameter.</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://p5js.org/examples/hello-p5-animation.html" target="_blank">https://p5js.org/examples/hello-p5-animation.html</a></p>
+    <ul>
+      <li>Laat de cirkel sneller heen een weer wiebelen.</li>
+      <li>Pas de code aan zodat de cirkel horizontaal beweegt van links naar rechts, en op en neer wiebelt.</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://p5js.org/examples/math-distance-2d.html" target="_blank">https://p5js.org/examples/math-distance-2d.html</a></p>
+    <ul>
+      <li>Zorg dat de cirkels kleiner getekend worden.</li>
+      <li>Maak het donkere gebied rondom de muis positie groter.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Meer voorbeelden om mee te experimenteren:</p>
+<ul>
+  <li><a href="https://p5js.org/examples/simulate-spirograph.html" target="_blank">https://p5js.org/examples/simulate-spirograph.html</a></li>
+  <li><a href="https://p5js.org/examples/drawing-patterns.html" target="_blank">https://p5js.org/examples/drawing-patterns.html</a></li>
+  <li><a href="https://p5js.org/examples/math-noise-wave.html" target="_blank">https://p5js.org/examples/math-noise-wave.html</a></li>
+  <li><a href="https://p5js.org/examples/math-double-random.html" target="_blank">https://p5js.org/examples/math-double-random.html</a></li>
+  <li><a href="https://p5js.org/examples/input-milliseconds.html" target="_blank">https://p5js.org/examples/input-milliseconds.html</a></li>
+</ul>
+<br><br>
+
+      </article>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

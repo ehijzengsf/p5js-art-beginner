@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a class='active' href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Loops en random</h1><br><br>
+
+<p>In deze opdrachten ga je met loops en random waarden werken in de <a href="https://editor.p5js.org/" target="_blank">p5 editor</a>. Geef elke opdracht een naam en bewaar ze. <em>Tip:</em> zet je <code>frameRate</code> op bijv. 1 om elke seconde een nieuwe compositie te genereren. </p>
+
+<h2>Opdrachten</h2>
+<ol>
+  <li>
+    <p>Maak een loop om een aantal rechthoeken van variabele breedte en dezelfde hoogte te tekenen zoals in dit voorbeeld. Bedenk eerst welk type loop hiervoor geschikt is. Verder gebruik je random waarden voor de vulkleur. Dit kan met <em>6 regels code</em> in de <code>draw</code> functie. </p>
+    <img src="assets/rects1.jpg" />
+    <ul><em>Regels:</em>
+      <li>Rechthoeken hebben verschillende breedte maar raken niet de rechterkant van je canvas.</li>
+      <li>Rechthoeken hebben dezelfde hoogte.</li>
+      <li>De vulkleur variëert.</li>
+    </ul><br>
+  </li>
+  <li>
+    <p>Maak een loop om een aantal rechthoeken van variabele breedte en hoogte te tekenen zoals in dit voorbeeld. Bedenk weer goed welk type loop hiervoor geschikt is en zorg dat je niet teveel rechthoeken tekent. Je gebruikt een random waarde voor de grijstint van elke rechthoek. Dit kan met <em>9 regels code</em> in de <code>draw</code> functie. </p>
+    <img src="assets/rects2.jpg" />
+    <ul><em>Regels:</em>
+      <li>Rechthoeken hebben verschillende breedte maar raken niet de zijkanten van je canvas.</li>
+      <li>Rechthoeken hebben verschillende hoogte.</li>
+      <li>Teken precies genoeg rechthoeken zodat ze in de hoogte van je canvas passen.</li>
+      <li>De grijstint variëert.</li>
+    </ul><br>
+  </li>
+  <li>
+    <p>Maak een geneste loop om een raster van vierkanten te tekenen zoals in dit voorbeeld. Zorg ervoor dat de vierkantjes naar beneden toe steeds willekeuriger gepositioneerd worden en steeds donkerder worden. Gebruik hierbij ook nog wat random variatie. Dit kan met <em>9 regels code</em> in de <code>draw</code> functie. </p>
+    <img src="assets/squares1.jpg" />
+    <ul><em>Regels:</em>
+      <li>De x- en y-positie van elk vierkant variëert steeds meer van boven naar beneden.</li>
+      <li>De grijstint van de vierkanten wordt steeds donkerder van boven naar beneden.</li>
+      <li>De grijstint van de vierkanten variëert ook horizontaal een beetje.</li>
+    </ul><br>
+  </li>
+  <li><em>Extra</em>
+    <p>Maak een geneste loop om een raster van cirkels en cirkelsegmenten te tekenen zoals in dit voorbeeld. Je gebruikt random waarden voor de vulkleur van elke cirkel en de lengte van elk cirkelsegment. Dit kan met <em>15 regels code</em> in de <code>draw</code> functie. </p>
+    <img src="assets/circles1.jpg" />
+    <ul><em>Regels:</em>
+      <li>Cirkels hebben een willekeurige vulkleur, maar er zit geen rood in - óf geen groen, óf geen blauw.</li>
+      <li>Teken met <code>arc()</code> cirkelsegmenten van een kwart, een halve of driekwart cirkel.</li>
+      <li>Optioneel: variëer de diameter van de cirkels, teken extra cirkels en/of cirkelsegmenten op elke positie.</li>
+    </ul><br>
+  </li>
+</ol>
+
+<h2 id="sharing-your-work">Inleveren</h2>
+
+<p>Voor elke opdracht selecteer je <code>Share</code> in het <code>File</code> menu van de webeditor. Kies <code>Edit</code> en deel de link met je docent.</p><br><br>
+
+      </article>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

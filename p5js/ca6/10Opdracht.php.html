@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a class='active' href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Generatief kunstwerk</h1><br><br>
+
+<div class="imagecontainer">
+  <div><img src="assets/circles01.gif" width="264"/></div>
+  <div><img src="assets/rects01.gif" width="264"/></div>
+  <div><img src="assets/circles02.gif" width="264"/></div>
+  <div><img src="assets/rects02.gif" width="264"/></div>
+  <div><img src="assets/rects03.gif" width="264"/></div>
+  <div><img src="assets/circles04.gif" width="264"/></div>
+</div>
+
+<p>In de eindopdracht ga je een algoritme schrijven om een eigen generatief kunstwerk te creëren, waarin je een aantal vershillende technieken die je deze cursus geleerd hebt gaat toepassen en proberen te combineren. De voorbeelden hierboven dienen alleen ter inspiratie. Je sketch moet in ieder geval een mate van willekeur bevatten waardoor het er iedere keer iets anders uitziet. Daarnaast is het de bedoeling dat je een vorm van animatie en/of interactie toepast in je werk. Je stelt bovendien een aantal regels op waaraan je programma zich moet houden. Je maakt de opdracht weer in de <a href="https://editor.p5js.org/" target="_blank">p5 editor</a>. </p>
+
+<h2 id="rule-your-work">Regels</h2>
+
+<p>Welke regels ga je opstellen? Dat mag je helemaal zelf weten, maar je gebruikt <em>minimaal 3 regels</em> voor je algoritme. <em>De regels voor je algoritme voeg je als comments toe boven je code in de editor</em>. Hieronder een aantal suggesties:</p>
+<ul>
+  <li>Compositie</li>
+    <ul>
+      <li>Maak je gebruik van een regelmatig grid of wordt je compositie meer chaotisch? Of doe je beide, bijv. links regelmatig, naar rechts toe steeds onregelmatiger.</li>
+      <li>Moet je compositie op sommige plekken drukker ogen dan op ander plekken?</li>
+      <li>Gebruik je veel verschillende vormen en kleuren of juist heel weinig?</li>
+    </ul>
+  </li>
+  <li>Vormen</li>
+    <ul>
+      <li>Gebruik je standaard vormen, ga je speciale vormen maken om te gebruiken?</li>
+      <li>Mag je bepaalde vormen niet gebruiken, of moeten bepaalde vormen vaker voorkomen dan andere? Moeten sommige vormen groter getekend worden dan andere?</li>
+      <li>Maak je het type vorm afhankelijk van de plaats in je compositie, bijv. bovenin meer cirkels, onderin meer vierkanten?</li>
+      <li>Mogen vormen overlappen of moet er juist ruimte zitten tussen vormen?</li>
+    </ul>
+  </li>
+  <li>Kleuren</li>
+    <ul>
+      <li>Gebruik je één of meer kleurenpaletten in je compositie, gebruik je willekeurige kleuren?</li>
+      <li>Maak je gebruik van vulkleuren en/of lijnkleuren, en is de lijnkleur bijv. afhankelijk van de vulkleur?</li>
+      <li>Sluit je bepaalde kleuren uit of gebruik je bijv. alleen pasteltinten of juist alleen harde kleuren?</li>
+      <li>Is de kleur afhankelijk van de plaats in je compositie, bijv. in het midden meer geeltinten, aan de randen meer blauw?</li>
+      <li>Gebruik je transparante kleuren, laat je kleuren overlappen om zo nieuwe kleuren te genereren?</li>
+    </ul>
+  </li>
+  <li>Animatie</li>
+    <ul>
+      <li>Beweegt je compositie vloeiend en subtiel of is de animatie juist wild en chaotisch?</li>
+      <li>Welke eigenschappen van je vormen ga je animeren? Denk aan grootte, positie, rotatie, kleuren etc.</li>
+      <li>Animeer je meerdere eigenschappen van je vormen, of beperk je het tot bijv. alleen de kleuren?</li>
+    </ul>
+  </li>
+  <li>Interactie</li>
+    <ul>
+      <li>Heeft de gebruiker veel of weinig invloed op je compositie?</li>
+      <li>Welke eigenschappen van je vormen ga je interactief maken? Denk aan grootte, positie, rotatie, kleuren etc.</li>
+      <li>Maak je meerdere eigenschappen interactief of slechts enkele?</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="tips-for-your-work">Tips</h2>
+
+<p>Denk eraan dat het handig is om met een array van objecten te werken als je meerdere vormen wilt animeren en/of interactief wilt maken.</p>
+<p>Denk aan het gebruik van <code>translate()</code>, <code>push()</code> en <code>pop()</code> als je bijv. elementen wilt roteren of schalen.</p>
+
+<h2 id="rating-your-work">Beoordeling</h2>
+
+<p>Waaraan moet je werk voldoen?</p>
+<ul>
+  <li>Je schrijft een werkend algoritme, dwz. je code functioneert en je sketch moet iets laten zien.</li>
+  <li>Je sketch bevat de <em>regels</em> waaraan je algoritme zich houdt, genoteerd in comments.</li>
+  <li>Je sketch maakt gebruik van <em>variabelen</em>.</li>
+  <li>Je sketch maakt gebruik van for en/of while <em>loops</em> voor herhalingsopdrachten.</li>
+  <li>Je sketch maakt gebruik van <em>random</em> en/of <em>noise</em> functies om een mate van willekeur in te bouwen.</li>
+  <li>Je sketch maakt gebruik van <em>arrays</em> en <em>objecten</em>.</li>
+  <li>Je sketch bevat een vorm van <em>animatie</em> en/of <em>interactie</em>.</li>
+  <li>Je code is leesbaar, goed gestructureerd en efficiënt.</li>
+</ul>
+
+<p>Je cijfer is als volgt opgebouwd:</p>
+<table>
+  <thead>
+    <tr>
+      <th>percentage</th>
+      <th>onderdelen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10%</td>
+      <td>Gratis.</td>
+    </tr>
+    <tr>
+      <td>5%</td>
+      <td>Sketch maakt goed gebruik van variabelen.</td>
+    </tr>
+    <tr>
+      <td>10%</td>
+      <td>Sketch maakt goed gebruik van loops.</td>
+    </tr>
+    <tr>
+      <td>15%</td>
+      <td>Sketch maakt goed gebruik van willekeur waardoor de output er telkens anders uitziet.</td>
+    </tr>
+    <tr>
+      <td>5%</td>
+      <td>Sketch maakt gebruik van arrays.</td>
+    </tr>
+    <tr>
+      <td>5%</td>
+      <td>Sketch maakt gebruik van objecten.</td>
+    </tr>
+    <tr>
+      <td>10%</td>
+      <td>Vorm- en kleurgebruik in sketch leveren aantrekkelijke, wisselende composities op.</td>
+    </tr>
+    <tr>
+      <td>15%</td>
+      <td>Sketch bevat animatie en/of interactie.</td>
+    </tr>
+    <tr>
+      <td>15%</td>
+      <td>Code is leesbaar, goed gestructureerd en efficiënt.</td>
+    </tr>
+    <tr>
+      <td>5%</td>
+      <td>Sketch bevat de regels waaraan je algoritme zich houdt, genoteerd in comments bovenaan je code.</td>
+    </tr>
+    <tr>
+      <td>5%</td>
+      <td>Sketch bevat comments boven blokjes code waarin kort en bondig staat genoteerd wat dat stukje code uitvoert.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Hoe moeilijker je code is, maar ook hoe creatiever, verrassender en interactiever, hoe hoger je cijfer. Je kunt altijd info opzoeken op de <a href="https://p5js.org/reference/" target="_blank">referentiepagina</a> van p5.js. Ook mag je gebruik maken van eerder gemaakte sketches, voorbeelden uit de lessen en de voorbeelden op de p5.js <a href="https://p5js.org/examples/" target="_blank">examples</a> pagina. Je mag stukken code kopiëren en aanpassen of alleen gebruiken voor inspiratie. Creativiteit wordt beloond dus leef je uit.</p>
+
+<h2 id="sharing-your-work">Inleveren</h2>
+
+<p>In het <code>File</code> menu van de webeditor, selecteer je <code>Share</code>. Kies <code>Edit</code> en deel de link met je docent.</p><br><br>
+
+      </article>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

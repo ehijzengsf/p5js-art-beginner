@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a class='active' href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">KunstGenerator</h1>
+
+<p>In deze cursus leer je een computerprogramma te schrijven dat kunst genereert. Je maakt kennis met p5.js, een JavaScript module voor creative coding. Hiermee kun je een aantal voorwaarden opstellen in een algoritme waarna het programma, op basis van willekeur, zelf keuzes maakt in het voltooien van het kunstwerk.<p>
+
+<div class="imagecontainer">
+  <div><img src="assets/emojis.jpg" width="400" /><p></p></div>
+  <div><img src="assets/kjetilgolid-studioapartments-2019.jpg" width="400" /><p>Kjetil Golid, Studio Apartments, 2019</p></div>
+  <div><img src="assets/okazz.jpg" width="400" /><p>Okazz, 201025a, 2020</p></div>
+  <div><img src="assets/hype.jpg" width="400" /><p></p></div>
+</div>
+
+<h2 id="what-is-ga">Wat is generatieve kunst?</h2>
+
+<p>Generatieve kunst is een vorm van kunst die in het geheel of deels is gecreëerd met behulp van een autonoom systeem. Het kunstwerk wordt een samenwerking tussen de kunstenaar en de computer, waarbij de maker slechts een aantal aspecten van het kunstwerk bepaalt. Vaak spelen elementen van willekeur een rol, waardoor het gegenereerde resultaat van verschijningsvorm kan veranderen. In zekere zin geeft de kunstenaar gedeeltelijk de controle over diens kunst uit handen aan het programma. De maker stelt een verzameling regels en instructies op in een algoritme, en vervolgens wordt het werk gegenereerd door het uitvoeren van de code.<p>
+
+<p>Generatieve kunst bestaat al sinds de jaren 60 van de twintigste eeuw, toen kunstenaars de mogelijkheden gingen verkennen om met behulp van computers afbeeldingen te maken. Voor die tijd waren het vooral wetenschappers die de benodigde technische kennis hadden om computers te bedienen. Het waren dan ook wetenschappers die de eerste tentoonstellingen met computergegenereerde afbeeldingen organiseerden. Met de komst van de PC en meer toegankelijke programmeertalen vanaf de jaren 80 werd het kunstenaars en ontwerpers mogelijk gemaakt om hun werk te maken met behulp van computers.</p>
+
+<p>Vandaag de dag is generatieve kunst wijdverbreid en volledig geaccepteerd als volwaardige kunstvorm. Het wordt wereldwijd geëxposeerd in musea voor moderne kunst en verhandeld op kunstbeurzen, in galeries en online. In Amsterdam is het NXT Museum volledig gewijd aan generatieve en interactieve mediakunst. En met de stormachtige opkomst van NFTs - eigendomsbewijzen van digitaal werk opgeslagen in blockchain technologie - is voor het eerst een verdienmodel ontstaan voor makers van digitale kunst.</p>
+
+<h2 id="what-is-algorithm">Wat is een algoritme?</h2>
+
+<p>Een <em>algoritme</em> is niet meer dan: een aantal stappen dat je zet om een bepaald doel te bereiken. Een algoritme heeft dus niet per se te maken met grote bergen data en technologie. Een rekensom is een algoritme, maar een doe-het-zelf bouwpakket is dat ook. In de instructiehandleiding staat precies beschreven hoe en in welke volgorde je bepaalde handelingen moet uitvoeren om uiteindelijk tot het eindresultaat, bijvoorbeeld een kast, te komen. Hierbij is het belangrijk om alles in de juiste volgorde uit te voeren, anders gaat je kast nergens op lijken.</p>
+
+<p>Een algoritme is dus in feite een <em>stappenplan</em>. In de informatica worden algoritmes vaak gebruikt om logistieke problemen op te lossen of om processen te optimaliseren. Bijvoorbeeld om een schoolrooster of dienstregeling te maken, of een zelflerend algoritme voor spraakherkenning. In deze cursus gaan we algoritmes op een andere manier gebruiken, niet om problemen op te lossen maar om een digitaal kunstwerk te genereren. Je gaat leren om een set regels en instructies op te stellen in een algoritme dat visueel werk genereert, met een belangrijke rol voor toeval waardoor je kunstwerk er telkens anders uit kan zien.</p>
+
+<h2 id="what-is-p5js">Wat is p5.js?</h2>
+
+<p>p5.js is een <em>JavaScript library</em> (een library is min of meer een verzameling van functies, opdrachten voor de computer) en daarmee geeft het je een aantal gereedschappen om het makkelijker te maken om de JavaScript programmeertaal te gebruiken om creatief te coderen. p5.js is ontworpen voor programmeurs en ontwerpers die interactieve, visuele programma's willen maken die rechtstreeks op een webpagina worden uitgevoerd. Het is ontworpen voor creatief coderen en bevindt zich op het snijvlak van coderen en kunst. Het is gebaseerd op <a href="https://processing.org/" target="_blank">Processing</a>, een creatieve programmeer omgeving die oorspronkelijk ontwikkeld is door Ben Fry and Casey Reas. Een van de belangrijkste doelen van Processing (en projecten gebaseerd op Processing) is om het makkelijker te maken voor beginners om programmeren te leren voor specifiek interactieve en grafische programma's (terwijl het ook zeer krachtige en mooie tools geeft voor experts).</p>
+
+<p>Een ander belangrijk idee achter Processing is dat het heel makkelijk zou moeten zijn voor programmeurs om software <em>prototypes</em> snel te kunnen maken, om nieuwe ideeën uit te proberen om te zien of het werkt. Om deze reden hebben de bedenkers de Processing (en p5.js) programma's 'sketches' (schetsen) genoemd. Een benaming die we hier zullen aanhouden. Want net zoals je niet hoeft te weten hoe het eindresultaat eruit zal zien als je begint te tekenen, hoef je ook niet te weten hoe het eindresultaat eruit zal zien als je begint met coderen.</p>
+
+<p>Je werkt deze cursus in de <a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a>, een online programmeeromgeving waarin je je code schrijft en ook je werk kunt opslaan (al is het natuurlijk handig om je werk ook lokaal op te slaan, de cloud kan ook kapot). Je kunt in de p5 editor direct aan de slag gaan, je hoeft niets te downloaden of te installeren. Bovendien zijn er talloze voorbeelden beschikbaar en kun je heel makkelijk je werk delen met anderen.</p>
+
+<h2 id="what-do-i-know">Wat weet ik al over programmeren?</h2>
+
+<p>Deze cursus gaat ervan uit dat je al het één en ander weet over programmeren, je hebt hiervoor al een beginnerscursus programmeren in Python of JavaScript afgerond. Je hebt dus al gewerkt met datatypes als <em>int</em>, <em>float</em>, <em>boolean</em> en <em>string</em>, en je weet wat <em>expressies</em> en <em>operatoren</em> zijn en hoe je ze kunt gebruiken in je code om bijvoorbeeld een wiskundige berekening uit te voeren en het resultaat op te slaan in een <em>variabele</em>. Je weet ook hoe je <em>variabelen</em> kunt gebruiken om je code efficienter te maken en makkelijker aan te passen. Ook kun je een <em>if/else statement</em> gebruiken om een keuzestructuur in te bouwen in je programma. </p>
+
+      </article>
+    </main>
+    <footer class="footer">
+      <small>
+        &copy; <time datetime="2022-04-23T19:20:00-04:00">2022</time>. De tekst van deze site is onder een
+         <a rel="license"
+            href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+            Commons Attribution-NonCommercial 4.0 International License</a>. Enkele delen van deze tekst zijn overgenomen uit de vertaling door <a href="https://www.visualeditor.nl/">Marijn van der Meer</a> van een tutorial van <a href="https://creative-coding.decontextualize.com/">Allison Parrish</a>. 
+            Bovendien zijn de code voorbeelden onder een: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 licentie</a>.
+            Deze pagina gebruikt de P5-widget, die <a href="https://toolness.github.io/p5.js-widget/"> hier </a> te vinden is 
+      </small>
+    </footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

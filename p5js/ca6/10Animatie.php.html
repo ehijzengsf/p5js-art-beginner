@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a class='active' href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Meer animatie</h1>
+
+<p>In dit hoofdstuk gaan we kijken naar nog wat meer manieren waarop we animatie kunnen toepassen in p5js.</p>
+
+<h2 id="noise">Noise</h2>
+
+<p>In een voorgaand hoofdstuk heb je geleerd om met de <code>random()</code> en <code>sin()</code> functies te werken. Als je elk frame deze functies aanroept geeft <code>random()</code> altijd een volledig willekeurig getal, terwijl <code>sin()</code> elk frame een getal geeft dat iets groter of kleiner is dan het vorige frame, omdat sinus een regelmatige golfbeweging volgt. Hieronder zie je dat in twee grafiekjes met de waarde uitgezet tegen de tijd. </p>
+
+<div class="imagecontainer">
+  <div><img src="assets/graph-random.jpg" width="400" /></div>
+  <div><img src="assets/graph-sin.jpg" width="400" /></div>
+</div>
+
+<p><code>noise()</code> zit daar een beetje tussenin zou je kunnen zeggen. Net als <code>sin()</code> krijgen we bij <code>noise()</code> elk frame een getal dat iets groter of kleiner is dan het vorige frame, maar met wat meer willekeur. En noise is ook afhankelijk van de tijd, net als sinus. Hieronder zie je grafiek van de <code>noise()</code> functie. </p>
+
+<div><img src="assets/graph-noise.jpg" width="400" /></div>
+
+<p>Met <code>noise()</code> kun je dus meer harmonische, natuurlijke animaties maken dan met <code>random()</code>, maar minder regelmatig als met <code>sin()</code>, we noemen dat <em>semi-random</em>. Deze functie in p5.js is gebaseerd op <a href="https://en.wikipedia.org/wiki/Perlin_noise" target="_blank">Perlin noise</a>, wat veel gebruikt wordt in computerspelletjes om bijv. landschappen te creëren. <code>noise()</code> geeft net als <code>random()</code> een getal tussen 0 en 1 terug. Hieronder een voorbeeld met alledrie de functies. De onderste cirkel gebruikt <code>noise()</code> voor de x-positie. Let ook even op het hergebruik van de <code>xpos</code> variabele; voor elke cirkel kennen we een nieuwe waarde toe aan de <code>xpos</code> mbv. de verschillende functies. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  fill(0);
+}
+
+function draw() {
+  background(220);
+  
+  let xpos = random() * width;
+  circle(xpos, height * 0.25, 40);
+  
+  xpos = (sin(frameCount/50)+1)/2 * width;
+  circle(xpos, height * 0.5, 40);
+  
+  xpos = noise(frameCount/100) * width;
+  circle(xpos, height * 0.75, 40);
+}
+</script>
+
+<p>We kunnen natuurlijk ook <code>noise()</code> gebruiken voor de y-positie. Je zou dan dit kunnen doen: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  fill(0);
+}
+
+function draw() {
+  background(220);
+  let xnoise = noise(frameCount/100) * width;
+  let ynoise = noise(frameCount/100) * height;
+  circle(xnoise, ynoise, 40);
+}
+</script>
+
+<p>Hee maar wacht even. De cirkel beweegt nu precies hetzelfde in de x-richting als in de y-richting.. waarom? Goed om te weten is dat <code>noise()</code> voor een bepaalde input altijd dezelfde output geeft, als je twee keer hetzelfde getal invoert in de functie krijg je beide keren dezelfde noise waarde terug (voor de duur dat je programma draait). We kunnen dit testen in de editor: </p>
+
+<pre><code>console.log(noise(0));
+console.log(noise(1));
+console.log(noise(2));
+console.log(noise(3));
+console.log(noise(0));
+console.log(noise(1));
+console.log(noise(2));
+console.log(noise(3));
+</code></pre>
+
+<p>levert zoiets op: </p>
+
+<pre><code>0.0987706235977439
+0.20249633021219143
+0.32403375619384556
+0.6585596236116547
+0.0987706235977439
+0.20249633021219143
+0.32403375619384556
+0.6585596236116547
+</code></pre>
+
+<p>Je ziet, de tweede vier waarden zijn hetzelfde als de eerste vier. Dat betekent dat als we de cirkel in de y-richting anders willen laten bewegen dan in de x-richting, we verschillende getallen in de <code>noise()</code> functie moeten stoppen. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  fill(0);
+}
+
+function draw() {
+  background(220);
+  let xnoise = noise(frameCount/100) * width;
+  let ynoise = noise(frameCount/100+1000) * height;
+  circle(xnoise, ynoise, 40);
+}
+</script>
+
+<p>Ok prima. Maar wat als we een heleboel cirkels willen animeren met noise? We nemen weer een voorbeeld uit een eerder hoofdstuk om een grid van cirkels te tekenen. De <code>noise()</code> functie accepteert ook twee of drie parameters. Als we twee parameters gebruiken dan kunnen we een noise waarde genereren op basis van de x- en y-positie van de cirkels. Dit noemen we <em>2D noise</em>. In het volgende voorbeeld gebruiken we de noise waarden om de grootte van de cirkels te bepalen. Ook hebben we de x en y gedeeld door honderd zodat de noise waarden wat dichter bij elkaar liggen. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  fill(0);
+}
+
+function draw() {
+  background(220);
+  for (let i = 0; i < 400; i++) {
+    let x = 10 + (i % 20) * 20;
+    let y = 10 + floor(i / 20) * 20;
+    let n = noise(x/100, y/100);
+    circle(x, y, 24 * n);
+  }
+}
+</script>
+
+<p>Maar we hebben nu nog geen animatie. Daarvoor kunnen we de derde parameter van de <code>noise()</code> functie gebruiken, daar voeren we de tijd in. We delen daarvoor de <code>frameCount</code> door tweehonderd, weer om te zorgen dat de noise waarden niet teveel van elkaar verschillen zodat alles niet te snel beweegt. Je zult altijd een beetje moeten experimenteren met die getallen totdat je tevreden bent met de gegenereerde patronen en de snelheid van je animaties. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+function setup() {
+  createCanvas(400, 400);
+  fill(0);
+}
+
+function draw() {
+  background(220);
+  let t = frameCount/200;
+  for (let i = 0; i < 400; i++) {
+    let x = 10 + (i % 20) * 20;
+    let y = 10 + floor(i / 20) * 20;
+    let n = noise(x/100, y/100, t);
+    circle(x, y, 24 * n);
+  }
+}
+</script>
+
+<h2 id="noise-animation-and-objects">Noise animatie met objecten</h2>
+
+<p>Aangezien we meerdere dezelfde vormen tekenen gaan we dit voorbeeld weer herschrijven naar objectgeoriënteerd, want dan kunnnen we er meer mee. En deze animatie doet me een beetje denken aan een camouflage patroon, dus ik heb de kleur van de cirkels ook aangepast en gebaseerd op de noise waarde die voor elk object gegenereerd wordt. Je kunt natuurlijk allerlei eigenschappen van je vormen animeren met noise. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let objects = [];
+function setup() {
+  createCanvas(400, 400);
+  fill(0);
+  noStroke();
+  for (let i = 0; i < 400; i++) {
+    let obj = new GrowCircle(10+(i%20)*20, 10+floor(i/20)*20, 24);
+    objects.push(obj);
+  }
+  
+}
+function draw() {
+  background(220);
+  for (let obj of objects)
+    obj.draw();
+}
+function GrowCircle(x, y, size) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.n = 0;
+  this.draw = function() {
+    this.n = noise(this.x/100, this.y/100, frameCount/200);
+    fill(this.n*255, (1-this.n)*255, 0)
+    circle(
+      this.x,
+      this.y,
+      this.n * this.size
+    );
+  };
+}
+</script>
+
+<p>In het volgende voorbeeld hebben we wat kleine aanpassingen gedaan die een heel ander resultaat opleveren. In plaats van cirkels worden vierkantjes getekend en de grootte van de vormen wordt niet meer geanimeerd, alleen de kleuren. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let objects = [];
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  rectMode(CENTER);
+  for (let i = 0; i < 400; i++) {
+    let obj = new ColorSquare(10+(i%20)*20, 10+floor(i/20)*20, 20);
+    objects.push(obj);
+  }
+  
+}
+function draw() {
+  for (let obj of objects)
+    obj.draw();
+}
+function ColorSquare(x, y, size) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.n = 0;
+  this.draw = function() {
+    this.n = noise(this.x/100, this.y/100, frameCount/200);
+    fill(this.n*255, random(4)+80, (1-this.n)*255)
+    square(
+      this.x,
+      this.y,
+      this.size
+    );
+  };
+}
+</script>
+
+<p>Ook kunnen we bijvoorbeeld vormen roteren afhankelijk van de noise waarde. Dan moeten we natuurlijk wel weer <code>translate()</code>, <code>push()</code> en <code>pop()</code> gebruiken. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="484">
+let objects = [];
+function setup() {
+  createCanvas(400, 400);
+  noStroke();
+  rectMode(CENTER);
+  for (let i = 0; i < 400; i++) {
+    let obj = new RotatingRect(10+(i%20)*20, 10+floor(i/20)*20, 20);
+    objects.push(obj);
+  }
+  
+}
+function draw() {
+  background(0);
+  for (let obj of objects)
+    obj.draw();
+}
+function RotatingRect(x, y, size) {
+  this.x = x;
+  this.y = y;
+  this.size = size;
+  this.n = 0;
+  this.draw = function() {
+    this.n = noise(this.x/100, this.y/100, frameCount/100);
+    fill(this.n*255)
+    push();
+    translate(this.x, this.y);
+    rotate(this.n);
+    rect(0, 0, this.size*2, this.size/10);
+    pop();
+  };
+}
+</script>
+
+      </article>
+    </main>
+      
+  <footer class="footer">
+  <small>
+    &copy; <time datetime="2022-04-23T19:20:00-04:00">2022</time>. De tekst van deze site is onder een
+     <a rel="license"
+        href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+        Commons Attribution-NonCommercial 4.0 International License</a>. Enkele delen van deze tekst zijn overgenomen uit de vertaling door <a href="https://www.visualeditor.nl/">Marijn van der Meer</a> van een tutorial van <a href="https://creative-coding.decontextualize.com/">Allison Parrish</a> en door mijzelf vertaalde tutorials van <a href="https://happycoding.io/tutorials/p5js/">Happy Coding</a>. 
+        Bovendien zijn de code voorbeelden onder een: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 licentie</a>.
+        Deze pagina gebruikt de P5-widget, die <a href="https://toolness.github.io/p5.js-widget/"> hier </a> te vinden is. <br><br>
+  </small>
+</footer>  
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a class='active' href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Meer herhaling</h1>
+
+<p>In dit hoofdstuk leer je werken met <code>while</code> loops en geneste loops. </p><br>
+
+<h2 id="while-loop"><code>while</code> loop</h2>
+
+<p>Eerder hebben we gezien hoe de <code>for</code> loop werkt, erg handig om een vooraf vastgesteld aantal opdrachten wilt herhalen. Maar wat doe je als je niet vantevoren weet hoe vaak je opdracht herhaald moet worden? Dan is een <code>while</code> loop geschikter. Die ziet er zo uit: </p>
+
+<pre><code>while (conditie) {
+    ... de code die hier staat wordt herhaald zolang de conditie waar is ...
+}
+</code></pre>
+
+<p>Stel dat je een rij vierkanten van willekeurige grootte wilt tekenen die precies binnen je canvas passen. Met een <code>for</code> loop krijg je dan zoiets: </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 200;
+let xpos = 0;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(100, 100, 255);
+  noStroke();
+
+  for (let i = 0; i < 10; i++) {
+    fill(random(20, 200));
+    let size = random(8, 64);
+    rect(xpos, ypos - size / 2, size, size);
+    xpos += size;
+  }
+}
+</script>
+
+<p>Je ziet dat de vierkantjes niet precies binnen het canvas passen, ze komen niet tot de rand of ze gaan voorbij de rand. Dat komt natuurlijk doordat ze een willekeurige grootte hebben, je weet dan niet vantevoren hoeveel er in je sketch passen. Hier is het handiger om een <code>while</code> loop te gebruiken:</p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 200;
+let xpos = 0;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(100, 100, 255);
+  noStroke();
+
+  while (xpos < width) {
+    fill(random(20, 200));
+    let size = random(8, 64);
+    rect(xpos, ypos - size / 2, size, size);
+    xpos += size;
+  }
+}
+</script>
+
+<p>Je ziet dat het nu wel past, en het totaal aantal vierkantjes verschilt afhankelijk van hun grootte. De grootte van de vormen bepaalt nu hoe vaak de code herhaald wordt. Maar wacht, het laatste vierkant past niet helemaal. Dat kun je verhelpen door in de loop te controleren of je al dicht bij de rand aangekomen bent: </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 200;
+let xpos = 0;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(100, 100, 255);
+  noStroke();
+
+  while (xpos < width) {
+    fill(random(20, 200));
+    let size = random(8, 64);
+    if (xpos + size > width) {
+      size = width - xpos;
+    }
+    rect(xpos, ypos - size / 2, size, size);
+    xpos += size;
+  }
+}
+</script>
+
+<h2 id="nested-loops">Geneste loops</h2>
+
+<p>Tot nu toe hebben we loops gebruikt om een rijtje vormen te tekenen, een rij cirkels bijvoorbeeld. Maar wat als we in plaats daarvan een <em>raster</em> van cirkels willen? We zouden het zo kunnen doen, door de loop te kopieren en te plakken: </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 140, ystep = 30;
+let xpos = 80, xstep = 30;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+  stroke('#ed225d');
+
+  for (let i = 0; i < 9; i++) {
+    ellipse(xpos+(xstep*i), ypos+(ystep*0), 20, 20);
+  }
+  for (let i = 0; i < 9; i++) {
+    ellipse(xpos+(xstep*i), ypos+(ystep*1), 20, 20);
+  }
+  for (let i = 0; i < 9; i++) {
+    ellipse(xpos+(xstep*i), ypos+(ystep*2), 20, 20);
+  }
+  for (let i = 0; i < 9; i++) {
+    ellipse(xpos+(xstep*i), ypos+(ystep*3), 20, 20);
+  }
+  for (let i = 0; i < 9; i++) {
+    ellipse(xpos+(xstep*i), ypos+(ystep*4), 20, 20);
+  }
+}
+</script>
+
+<p>Maar wacht. Hier zien we 5 keer een loop herhaald met maar een kleine variatie in de code. En dat is precies het probleem waar de <code>for</code> loop voor was bedacht om op te lossen. Dat kan dus ook slimmer, je kan namelijk een <code>for</code> loop <em>in</em> een andere <code>for</code> loop plaatsen. Dat noemen we het <em>nesten</em> van loops. Wanneer je een tweede <code>for</code> loop gebruikt, moet je wel een andere variabele naam gebruiken dan <code>i</code> in de tweede loop. Het is gebruikelijk om voor de tweede loop dan de <code>j</code> te nemen. Zo ziet de code er nu uit: </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 140, ystep = 30;
+let xpos = 80, xstep = 30;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+  stroke('#ed225d');
+
+  for (let j = 0; j < 5; j++) {
+    for (let i = 0; i < 9; i++) {
+      ellipse(xpos+(xstep*i), ypos+(ystep*j), 20, 20);
+    }
+  }
+}
+</script>
+
+<blockquote>
+  <p>LET OP: Het aantal cirkels dat wordt getekend is precies 45, dus 5 keer 9. Leg in je eigen woorden uit waarom dat zo is. </p>
+</blockquote>
+
+<blockquote>
+  <p>OEFENING: Neem het voorbeeld hierboven over en probeer met de variabelen <code>i</code> en <code>j</code> wat variatie in te brengen. Verander bijvoorbeeld de vulkleur, de dikte van de lijn, de grootte van de cirkels enz.! Hieronder een voorbeeldje: </p>
+</blockquote>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 140, ystep = 30;
+let xpos = 80, xstep = 30;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  stroke('#ed225d');
+
+  for (let j = 0; j < 5; j++) {
+    let size = 15 + j * 3;
+    for (let i = 0; i < 9; i++) {
+      fill(i*j*8);
+      ellipse(xpos+(xstep*i), ypos+(ystep*j), size, size);
+    }
+  }
+}
+</script>
+
+
+      </article>
+    </main>
+      
+  <footer class="footer">
+  <small>
+    &copy; <time datetime="2022-04-23T19:20:00-04:00">2022</time>. De tekst van deze site is onder een
+     <a rel="license"
+        href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+        Commons Attribution-NonCommercial 4.0 International License</a>. Enkele delen van deze tekst zijn overgenomen uit de vertaling door <a href="https://www.visualeditor.nl/">Marijn van der Meer</a> van een tutorial van <a href="https://creative-coding.decontextualize.com/">Allison Parrish</a> en door mijzelf vertaalde tutorials van <a href="https://happycoding.io/tutorials/p5js/">Happy Coding</a>. 
+        Bovendien zijn de code voorbeelden onder een: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 licentie</a>.
+        Deze pagina gebruikt de P5-widget, die <a href="https://toolness.github.io/p5.js-widget/"> hier </a> te vinden is. <br><br>
+  </small>
+</footer>  
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

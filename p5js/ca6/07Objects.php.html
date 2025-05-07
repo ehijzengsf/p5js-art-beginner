@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a class='active' href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Objecten</h1>
+
+<p>In dit hoofdstuk leer je werken met <code>objecten</code>. </p><br>
+
+<h2 id="objects">Objecten</h2>
+
+<p>Je weet ondertussen hoe je variabelen en arrays gebruikt, en hoe je loops gebruikt om code te herhalen voor elk element in een array.</p>
+
+<p>We gaan nu werken met een nieuw soort datastructuur, een <em>object</em>. Een object is een groep van variabelen en functies die bij elkaar horen. Als we in p5.js meerdere vormen willen animeren of interactief willen maken, dan moeten we de eigenschappen van die vormen opslaan in objecten. Een object kan meerdere variabelen bevatten, net zoals een array, maar alle individuele variabelen krijgen een <em>key</em>, een naam, en een <em>value</em>, een waarde. Dat noemen we key/value paren. Objecten zijn verder net als iedere andere waarde in JavaScript: je kan ze in variabelen opslaan, ze in arrays stoppen, of zelfs objecten in objecten opslaan.</p>
+
+<p>De basis syntax om een object te creëren ziet er zo uit:</p></p>
+
+<pre><code>let kat = {naam: "Heinz", leeftijd: 14, gewicht: 12.2};
+</code></pre>
+
+<p>Dit statement creëert een object en koppelt deze aan de variabele <code>kat</code>. Dit object heeft drie <em>keys</em>: <code>naam</code>, <code>leeftijd</code> en <code>gewicht</code>.
+Je kunt zelf de namen van je variabelen en keys verzinnen, maar zorg er altijd voor dat de namen die je kiest duidelijk maken om welke eigenschappen het gaat. Om nu toegang te krijgen tot een waarde bij een specifieke key, gebruik je de volgende syntax: </p>
+
+<pre><code>
+console.log(kat.naam);  // Heinz
+console.log(kat.leeftijd);  // 14
+</code></pre>
+
+<p>Dit noemen we <em>dot-notatie</em>. Je kun een nieuw key/value paar toevoegen aan een object door de syntax van hierboven te gebruiken voor het "=" teken en de waarde die je wilt toevoegen aan de rechterkant:</p>
+
+<pre><code>kat.kleur = "#000000";
+console.log(kat);  // {naam: "Heinz", leeftijd: 14, gewicht: 12.2, kleur: "#000000"}
+</code></pre>
+
+<p>Het is ook makkelijk om een <em>array</em> van objecten te maken, dit is de meest gebruikte manier voor het werken met objecten. Je zal het veelvuldig gebruiken in je net begonnen carriere als computerprogrammeur. Meestal zal je arrays inladen van een bron van buiten (zoals een API), of je zal een object laten genereren gedurende je programma (bijvoorbeeld voor het opslaan van data van gebruikersinput). Maar je kan ook direct een eigen object schrijven, zo ziet dat eruit: </p>
+
+<pre><code>let katten = [
+  {naam: "Heinz", leeftijd: 14, gewicht: 12.2},
+  {naam: "Dolly", leeftijd: 9, gewicht: 8.9},
+  {naam: "Vladimir", leeftijd: 8, gewicht: 11.0}
+];
+</code></pre>
+
+<p>Nu is <code>katten</code> een <em>array van objecten</em>. Objecten uit deze array selecteren doe je als volgt: </p>
+
+<pre><code>console.log(katten[0]);  // {naam: "Heinz", leeftijd: 14, gewicht: 12.2}
+  console.log(katten[2]);  // {naam: "Vladimir", leeftijd: 8, gewicht: 11.0}
+</code></pre>
+
+<p>En om de waarde van een key uit een object te krijgen in de lijst schrijf je: </p>
+
+<pre><code>console.log(katten[1].leeftijd);  // 9
+
+</code></pre><p>Je kun ook de waarde van een key in een object aanpassen. Bijvoorbeeld als er ééntje jarig is geweest. Of als een poes besluit dat zij voortaan eigenlijk liever als kat door het leven gaat: </p>
+
+<pre><code>katten[1].leeftijd += 1;
+  katten[1].naam = "Johnny";
+  console.log(katten[1]);  // {naam: "Johnny", leeftijd: 10, gewicht: 8.9}
+</code></pre>
+
+<p>Hier is een voorbeeld van hoe je een loop maakt om door een array van objecten heen te gaan. Deze loop print de <em>som van het gewicht</em> van alle katten uit de array: </p>
+
+<pre><code>let gewichtSom = 0;
+for (let i = 0; i &lt; katten.length; i++) {
+    gewichtSom += katten[i].gewicht;
+}
+console.log(gewichtSom);  // 32.1
+</code></pre>
+
+<h3 id="more-arrays">Meerdere arrays?</h3>
+
+<p>Laten we eens kijken hoe we in p5.js een aantal cirkels door het beeld kunnen laten bewegen, alsof ze vallen. Dit kunnen we natuurlijk doen door verschillende arrays aan te maken voor de x en de y positie: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="584">
+let xArray = [];
+let yArray = [];
+const numCircles = 16;
+
+function setup() {
+  createCanvas(400, 500);
+  noStroke();
+
+  for (let i = 0; i < numCircles; i++) {
+    xArray.push(random(width));
+    yArray.push(random(height)); 
+  }
+}
+
+function draw() {
+  background(50);
+
+  for (let i = 0; i < numCircles; i++) {
+    circle(xArray[i], yArray[i], 25);
+
+    yArray[i] += 1;
+    if(yArray[i] > height) {
+      yArray[i] = 0;
+    }
+  }
+}
+</script>
+
+<p>Ok, dit werkt. En we passen de waarden in de <code>yArray</code> aan om de cirkels te laten bewegen. Maar de vraag is of deze manier handig is. Want wat als je bijvoorbeeld iedere cirkel ook een eigen diameter en een eigen rgb kleur wil geven? Dan moet je al 6 verschillende arrays aanmaken, 2 voor de positie, 1 voor de diameter en 3 voor de r, g, b waarden. Je zou dan die 6 arrays ook weer in een array kunnen stoppen, maar hoe weet je dan nog welke waarden waarvoor staan? Dat moet je dan allemaal zelf onthouden, en bovendien wordt je code in razend tempo onoverzichtelijker. </p>
+
+<h3 id="array-of-objects">Een array van objecten</h3>
+
+<p>We kunnen hiervoor beter een array van objecten gebruiken, want dan kunnen we alle eigenschappen benoemen met key/value paren zoals we gezien hebben met de katten. Hieronder doen we hetzelfde als in bovenstaand voorbeeld, maar nu met objecten: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="584">
+let objects = [];
+
+function setup() {
+  createCanvas(400, 500);
+  noStroke();
+
+  for (let i = 0; i < 16; i++) {
+    let obj = {
+      x: random(width), 
+      y: random(height)
+    }
+    objects.push(obj);
+  }
+}
+
+function draw() {
+  background(50);
+
+  for (let obj of objects) {
+    circle(obj.x, obj.y, 25);
+
+    obj.y += 1;
+    if (obj.y > height) 
+      obj.y = 0;
+  }
+}
+</script>
+
+<p>We hebben hier een array aangemaakt die we in de setup functie vullen met 16 objecten, elk met een eigen willekeurige x- en y-positie. Vervolgens gebruiken we in de draw functie de waarden van de keys van elk object om de cirkels te tekenen. Je ziet hier overigens een ander type <code>for</code> loop dan we tot nu toe gezien hebben, met een iets kortere notatie, maar het komt op hetzelfde neer. </p>
+
+<pre><code>let objects = [{x:1, y:1}, {x:2, y:2}, {x:3, y:3}];
+for (let i = 0; i < objects.length; i++) {
+  let obj = objects[i];
+  console.log(obj);
+}
+</code></pre>
+
+is identiek aan: 
+
+<pre><code>let objects = [{x:1, y:1}, {x:2, y:2}, {x:3, y:3}];
+for (let obj of objects) {
+  console.log(obj);
+}
+</code></pre>
+
+<p>Laten we nu ook eens wat random waarden kiezen voor de diameter en de kleur van elke cirkel: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="584">
+let objects = [];
+
+function setup() {
+  createCanvas(400, 500);
+  noStroke();
+  for (let i = 0; i < 16; i++) {
+    let obj = {
+      x: random(width), 
+      y: random(height),
+      diam: random(10, 40),
+      r: random(255),
+      g: random(255),
+      b: random(255)
+    }
+    objects.push(obj);
+  }
+}
+
+function draw() {
+  background(50);
+  for (let obj of objects) {
+    fill(obj.r, obj.g, obj.b);
+    circle(obj.x, obj.y, obj.diam);
+    obj.y += 1;
+    if (obj.y > height) 
+      obj.y = 0;
+  }
+}
+</script>
+
+<h3 id="diy-objects">Objecten doen hun eigen ding</h3>
+
+<p>In de draw functie gebruiken we nu de <code>r</code>, <code>g</code>, <code>b</code> keys van elk object om de vulkleur te bepalen, en de <code>x</code>, <code>y</code> en <code>diam</code> keys voor de positie en de diameter van de cirkel. En we passen de <code>y</code> key van elk object aan voor de animatie. Maar het gebruik van objecten biedt nog meer voordelen. <em>Objecten zijn namelijk onafhankelijk van elkaar</em>, en dat maakt het mogelijk om <em>variatie in gedrag</em> aan te brengen in onze code. Je kun de objecten die je maakt <em>individueel controleren</em>. Kijk maar naar het volgende voorbeeld, hier geven we elke cirkel een eigen snelheid: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="584">
+let objects = [];
+let colors = ["#420C14","#732C2C","#ABA361","#BAD9B5","#EFF7CF"];
+
+function setup() {
+  createCanvas(400, 500);
+  noStroke();
+  for (let i = 0; i < 16; i++) {
+    let obj = {
+      x: random(width), 
+      y: random(height),
+      diam: random(10, 40),
+      color: random(colors),
+      speed: random(0.4, 2.4)
+    }
+    objects.push(obj);
+  }
+}
+
+function draw() {
+  background(50);
+  for (let obj of objects) {
+    fill(obj.color);
+    circle(obj.x, obj.y, obj.diam);
+    obj.y += obj.speed;
+    if (obj.y > height) {
+      obj.x = random(width);
+      obj.y = 0;
+    }
+  }
+}
+</script>
+
+<p>We kunnen de snelheid van de cirkels ook afhankelijk maken van hun diameter, zodat grotere cirkels altijd sneller bewegen dan kleinere (of andersom): </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="584">
+let objects = [];
+let colors = ["#420C14","#732C2C","#ABA361","#BAD9B5","#EFF7CF"];
+
+function setup() {
+  createCanvas(400, 500);
+  noStroke();
+  for (let i = 0; i < 16; i++) {
+    let obj = {
+      x: random(width), 
+      y: random(height),
+      diam: random(10, 40),
+      color: random(colors)
+    }
+    objects.push(obj);
+  }
+}
+
+function draw() {
+  background(50);
+  for (let obj of objects) {
+    fill(obj.color);
+    circle(obj.x, obj.y, obj.diam);
+    obj.y += obj.diam / 10;
+    if (obj.y > height) {
+      obj.x = random(width);
+      obj.y = 0;
+    }
+  }
+}
+</script>
+
+<p>En we kunnen gebruikers bijvoorbeeld ook nieuwe cirkels laten toevoegen door in het scherm te klikken: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="584">
+let objects = [];
+let colors = ["#2F242C","#502274","#A42CD6","#C179B9","#EEB4B3"];
+
+function setup() {
+  createCanvas(400, 500);
+  noStroke();
+  for (let i = 0; i < 16; i++) {
+    let obj = {
+      x: random(width), 
+      y: random(height),
+      diam: random(10, 40),
+      color: random(colors)
+    }
+    objects.push(obj);
+  }
+}
+
+function draw() {
+  background(50);
+  for (let obj of objects) {
+    fill(obj.color);
+    circle(obj.x, obj.y, obj.diam);
+    obj.y += obj.diam / 10;
+    if (obj.y > height) {
+      obj.x = random(width);
+      obj.y = 0;
+    }
+  }
+}
+
+function mousePressed() {
+  let obj = {
+    x: mouseX, 
+    y: mouseY,
+    diam: random(10, 40),
+    color: random(colors)
+  }
+  objects.push(obj);
+}
+</script>
+
+<p>Maar wacht eens even.. zien we nu <em>bijna exact dezelfde code</em> in de <code>setup()</code> functie en de <code>mousePressed()</code> functie? Daar kunnen we dan toch beter een aparte <em>functie met parameters</em> voor schrijven. Dat doen we als volgt: </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="584">
+let objects = [];
+let colors = ["#2F242C","#502274","#A42CD6","#C179B9","#EEB4B3"];
+
+function setup() {
+  createCanvas(400, 500);
+  noStroke();
+  for (let i = 0; i < 16; i++) {
+    let obj = new FallingCircle(random(width), random(height), random(10, 40), random(colors));
+    objects.push(obj);
+  }
+}
+
+function draw() {
+  background(50);
+  for (let obj of objects) {
+    fill(obj.color);
+    circle(obj.x, obj.y, obj.diam);
+    obj.y += obj.diam / 10;
+    if (obj.y > height) {
+      obj.x = random(width);
+      obj.y = 0;
+    }
+  }
+}
+
+function mousePressed() {
+  let obj = new FallingCircle(mouseX, mouseY, random(10, 40), random(colors));
+  objects.push(obj);
+}
+
+function FallingCircle(x, y, diam, color) {
+  this.x = x;
+  this.y = y;
+  this.diam = diam;
+  this.color = color;
+}
+</script>
+
+<p>Hier zien we een aantal zaken die we nog niet eerder gezien hebben, zoals <code>new</code> en <code>this</code> keywords, wat zijn dat? En waarom wordt die <code>FallingCircle()</code> functie met een hoofdletter geschreven? </p>
+
+<ul>
+  <li><code>FallingCircle()</code> is een functie die gebruikt wordt om een object aan te maken, en zo'n soort functie begint altijd met een hoofdletter. </li>
+  <li>Om een functie aan te roepen die een object aanmaakt gebruik je het <code>new</code> keyword vóór de function call. We maken immers een <em>nieuw</em> object aan.</li>
+  <li>Het <code>this</code> keyword wordt gebruikt om aan te geven dat díe specifieke eigenschappen (x, y, diam, color) bij dát specifieke object horen. Dit ene <code>FallingCircle()</code> object is <em>eigenaar</em> van de waarden die het binnenkrijgt via de parameters, en zo bezit elk object zijn eigen variabelen. </li>
+</ul>
+
+<p>Deze afspraken zijn allemaal gemaakt om je code overzichtelijk te houden, en om onderscheid te maken tussen gewone functies en functies die objecten creëren. Je verdeelt je <em>algoritme</em> hiermee onder in duidelijke kleine stapjes die in de juiste volgorde worden uitgevoerd. Daarnaast is je code ook gemakkelijk uit te breiden, want objecten kun je altijd hergebruiken. </p>
+
+<p>En het gaat nog verder, want <em>objecten kunnen zelf ook weer functies bevatten</em> die je kun aanroepen, zie hieronder hetzelfde voorbeeld weer een beetje aangepast. </p>
+
+<script type="text/p5" data-p5-version="1.4.1" data-preview-width="400" data-height="584">
+let objects = [];
+let colors = ["#2F242C","#502274","#A42CD6","#C179B9","#EEB4B3"];
+
+function setup() {
+  createCanvas(400, 500);
+  noStroke();
+  for (let i = 0; i < 16; i++) {
+    let obj = new FallingCircle(random(width), random(height), random(10, 40), random(colors));
+    objects.push(obj);
+  }
+}
+
+function draw() {
+  background(50);
+  for (let obj of objects) {
+    obj.draw();
+  }
+}
+
+function mousePressed() {
+  let obj = new FallingCircle(mouseX, mouseY, random(10, 40), random(colors));
+  objects.push(obj);
+}
+
+function FallingCircle(x, y, diam, color) {
+  this.x = x;
+  this.y = y;
+  this.diam = diam;
+  this.color = color;
+  
+  this.draw = function() {
+    fill(this.color);
+    circle(this.x, this.y, this.diam);
+    this.y += this.diam / 10;
+    if (this.y > height) {
+      this.x = random(width);
+      this.y = 0;
+    }
+  }
+}
+</script>
+
+<h3 id="thinking-in-objects">Denken in objecten</h3>
+
+<p>Objecten zijn een nieuwe manier om je code te organiseren, maar belangrijker nog, ze zijn een nieuwe manier van <em>denken</em> over je code. </p>
+
+<p>Als je bijvoorbeeld aan een aantal vallende cirkels denkt, zie je ze waarschijnlijk niet als een aantal x-waarden en een aantal y-waarden. Je ziet elke cirkel waarschijnlijk als een samenhangende eenheid, waarbij elke eenheid een x- en een y-waarde heeft. Met objecten kun je code structureren die beter aansluit bij hoe je ideeën in je hersenen structureert. </p>
+
+<p>Deze nieuwe manier van denken kan verwarrend zijn. Het kan frustrerend zijn als je er voor het eerst mee werkt. Maar het wordt natuurlijker naarmate je meer code schrijft en meer voorbeelden ziet die objecten gebruiken. </p>
+
+<p>Deze manier van "denken in objecten" wordt <a href="https://nl.wikipedia.org/wiki/Objectgeori%C3%ABnteerd" target="_blank">objectgeoriënteerd programmeren</a> genoemd en vormt de kern van veel talen en bibliotheken. </p>
+
+      </article>
+    </main>
+      
+  <footer class="footer">
+  <small>
+    &copy; <time datetime="2022-04-23T19:20:00-04:00">2022</time>. De tekst van deze site is onder een
+     <a rel="license"
+        href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+        Commons Attribution-NonCommercial 4.0 International License</a>. Enkele delen van deze tekst zijn overgenomen uit de vertaling door <a href="https://www.visualeditor.nl/">Marijn van der Meer</a> van een tutorial van <a href="https://creative-coding.decontextualize.com/">Allison Parrish</a> en door mijzelf vertaalde tutorials van <a href="https://happycoding.io/tutorials/p5js/">Happy Coding</a>. 
+        Bovendien zijn de code voorbeelden onder een: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 licentie</a>.
+        Deze pagina gebruikt de P5-widget, die <a href="https://toolness.github.io/p5.js-widget/"> hier </a> te vinden is. <br><br>
+  </small>
+</footer>  
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

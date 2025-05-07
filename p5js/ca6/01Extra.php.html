@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a class='active' href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Emoji Generator</h1><br><br>
+
+<img src="assets/emoji-generator.gif" />
+
+<p>In deze opdracht ga je een emoji generator uitbreiden en werkend maken. Open deze <a href="https://editor.p5js.org/visualdata/sketches/DV93NHen3" target="_blank">link</a> en login met je <em>email adres</em> en <em>wachtwoord</em>. <em>Lat op</em>: Bewaar de sketch nu eerst onder een nieue naam in je eigen account.</p>
+
+<p>Opdrachten:</p>
+<ol>
+  <li>
+    <p>Bestudeer eerst de code. Als je stukjes code tegenkomt die je niet begrijpt, dat geeft niet. Je hoeft nog niet alle code te begrijpen om er mee te kunnen werken, achter een hoop zaken kom je vaak vanzelf door er mee te experimenteren. En anders kun je het meestal ook opzoeken in de referentie. </p>
+
+    <p>In de code zijn al een aantal setjes ogen en een aantal monden aangemaakt, daar zie je verschillende functies voor. Bekijk welke ogen en monden allemaal beschikbaar zijn door in <code>drawMouth()</code> en <code>drawEyes()</code> andere functies aan te roepen. Deze staan nu standaard in gesteld op <code>Mouth1()</code> en <code>Eyes1()</code>. </p>
+  </li>
+  <li>
+    <p>En dan het echte werk, de generator werkend maken. De bedoeling is dat je programma elke 2 seconden willekeurig een nieuwe mond en willekeurig nieuwe ogen tekent, onafhankelijk van elkaar. Hiervoor heb je de <a href="https://p5js.org/reference/#/p5/random" target="_blank">random</a> functie en <a href="https://p5js.org/reference/#/p5/if-else" target="_blank">if/else</a> statements nodig. In de <code>draw()</code> functie is al geregeld dat <code>drawEmoji()</code> om de 2 seconden aangeroepen wordt, en die functie roept weer <code>drawFace()</code>, <code>drawMouth()</code> en <code>drawEyes()</code> aan. De code die jij gaat schrijven komt dus in deze laatste 2 functies te staan. </p>
+
+    <p>Schrijf in <code>drawMouth()</code> een stuk code om willekeurig één van de Mouth functies aan te roepen. Dit kun je doen door een <code>random</code> getal te genereren en dat vervolgens als conditie in een <code>if/else if</code> statement te verwerken. Is dat gelukt dan gebruik je hetzelfde principe in de <code>drawEyes()</code> functie. </p>
+  </li>
+</ol>
+
+<p>Referenties:</p>
+<ul>
+  <li><a href="https://p5js.org/reference/#/p5/if-else" target="_blank">p5js.org/reference/#/p5/if-else</a></li>
+  <li><a href="https://p5js.org/reference/#/p5/random" target="_blank">p5js.org/reference/#/p5/random</a></li>
+</ul>
+
+<h2 id="sharing-your-work">Inleveren</h2>
+
+<p>In het <code>File</code> menu van de webeditor, selecteer je <code>Share</code>. Kies <code>Edit</code> en deel de link met je docent.</p><br><br>
+
+      </article>
+    </main>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a  href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a class='active' href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Herhaling en willekeur</h1>
+
+<p>In dit hoofdstuk leer je werken met <code>for</code> loops en <code>random</code> waarden. </p><br>
+
+<h2 id="repeat">Herhaling</h2>
+
+<p>Loops gebruik je in je code om ervoor te zorgen dat je niet teveel werk doet. Je kunt natuurlijk 10 keer vrijwel dezelfde regel code typen onder elkaar, maar die code kun je meestal heel goed in een herhalingsopdracht plaatsen. In het voorbeeld hieronder worden 5 cirkels op een rij getekend:</p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 200;
+let xpos = 80;
+let xstep = 60;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+  noStroke();
+
+  ellipse(xpos, ypos, 40, 40);
+  ellipse(xpos + xstep, ypos, 40, 40);
+  ellipse(xpos + (xstep * 2), ypos, 40, 40);
+  ellipse(xpos + (xstep * 3), ypos, 40, 40);
+  ellipse(xpos + (xstep * 4), ypos, 40, 40);
+}
+</script>
+
+<p>Dit is op zich nog wel te doen, maar wat als ik 100 cirkels wil ipv. 5? Of als ik bijvoorbeeld de kleur per cirkel wil veranderen? Dan is het veel handiger om een loop te gebruiken. Op het eerste gezicht is misschien nog niet echt duidelijk hoe we dat kunnen doen. Hieronder zie je dezelfde code, maar dan iets anders geschreven:</p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 200;
+let xpos = 80;
+let xstep = 60;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+  noStroke();
+
+  ellipse(xpos + (xstep * 0), ypos, 40, 40);
+  ellipse(xpos + (xstep * 1), ypos, 40, 40);
+  ellipse(xpos + (xstep * 2), ypos, 40, 40);
+  ellipse(xpos + (xstep * 3), ypos, 40, 40);
+  ellipse(xpos + (xstep * 4), ypos, 40, 40);
+}
+</script> 
+
+<p>Nu zie je dat <em>iedere</em> aanroep van de <code>ellipse()</code> functie eigenlijk exact hetzelfde doet, afgezien van de x-positie die elke keer 60 pixels naar rechts verspringt. </p>
+
+<h2 id="for-loop"><code>for</code> loop</h2>
+
+<p>Er zijn verschillende manieren waarop je een loop kan maken in JavaScript. Degene die we als eerste gaan leren is de <code>for</code> loop. De <code>for</code> loop heeft een heel flexibele structuur die daardoor op meerdere manieren is te gebruiken, maar we beginnen met de standaardvorm en die ziet er zo uit: </p>
+
+<pre><code>for (let i = 0; i &lt; 10; i++) {
+    ... de code die hier staat wordt 10 keer herhaald ...
+}
+</code></pre>
+
+<p>De code tussen haakjes achter <code>for</code> ziet er een beetje gek uit, wat gebeurt daar precies? Eerst wordt een variabele i aangemaakt - <code>let i = 0</code>, vervolgens zolang i kleiner is dan 10 - <code>i < 10</code>, hoog dan i op met 1 - <code>i++</code>. De i is hier dus gewoon een tellertje dat begint bij 0 en iedere keer in de loop optelt. En die variabele i kun je dus ook gebruiken om iets voor elkaar te krijgen in je loop, kijk maar naar het voorbeeld hieronder: </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 200;
+let xpos = 80;
+let xstep = 60;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+  noStroke();
+
+  for (let i = 0; i < 5; i++) {
+    ellipse(xpos + (xstep * i), ypos, 40, 40);
+  }
+}
+</script>
+<p>En met deze korte code van twee regels hebben we de vijf regels uit het eerdere voorbeeld vervangen. Niet slecht! Hier is nog een versie van de code die nu negen cirkels tekent in plaats van vijf (de waarden voor de <code>xstep</code> en de diameter van de cirkels zijn wat aangepast om het te laten passen):</p>
+
+<script type="text/p5" data-preview-width="400" data-height="400">
+let ypos = 200;
+let xpos = 80;
+let xstep = 30;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+  noStroke();
+
+  for (let i = 0; i < 9; i++) {
+    ellipse(xpos + (xstep * i), ypos, 20, 20);
+  }
+}
+</script>
+
+<p>Probeer eens te spelen met dit voorbeeld door de code te veranderen en probeer te bedenken wat je nog meer kan doen. De sketch hieronder brengt wat variatie in de grootte van de cirkels en heeft een <code>fill()</code> toegevoegd die ook gebruik maakt van de <code>i</code> variabele om de kleur van iedere vorm geleidelijk te veranderen en herhaalt zich wel 12 keer in plaats van 9:</p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 200;
+let xpos = 80;
+let xstep = 30;
+let hstep = 15;
+let fillstep = 20;
+
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  fill(50);
+  noStroke();
+
+  for (let i = 0; i < 12; i++) {
+    fill(200, 255-(fillstep*i), 200);
+    ellipse(xpos+(xstep*i), ypos, 20, 20+(hstep*i));
+  }
+}
+</script>
+
+<p>Je kunt zo veel statements (regels) in een <code>for</code> loop stoppen als je wilt (en met "in een for loop stoppen" bedoel ik "tussen de accolades.") Elk statement zal keer op keer opnieuw weer worden uitgevoerd. </p>
+
+<blockquote>
+  <p>OEFENING: Neem een van de voorbeelden die een <code>for</code> loop gebruikt en schrijf het eens uit. Welke statements (regels) had je moeten schrijven als je geen for loop had gebruikt? </p>
+</blockquote>
+
+<h3 id="digging-deeper-into-for">Nog dieper de <code>for</code> loop in</h3>
+
+<p>In de basis is de <code>for</code> loop gewoon een manier van tellen. Het makkelijkst om dit te laten zien is met de <code>console.log()</code>. Kopieer en plak de volgende code tussen de  <code>{</code> en <code>}</code> na <code>de setup()</code> functie in een nieuwe sketch in de editor en klik op Play:</p>
+
+<pre><code>for (let i = 0; i &lt; 10; i++) {
+    console.log(i);
+}
+</code></pre>
+
+<p>De console output zal er zo uit zien:</p>
+
+<pre><code>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</code></pre>
+
+<p>Zoals je kunt zien print deze code heel simpel de getallen van nul tot negen (dat zijn tien herhalingen, startend met nul).</p>
+
+<p>De <code>for</code> loop kan ook gebruikt worden voor een iets geavanceerdere manier van tellen, gebruik het volgende code stukje: </p>
+
+<pre><code>for (let i = start; i &lt; eind; i += stap) {
+  ... your statements here ...
+}
+</code></pre>
+
+<p>In het bovenstaande code stukje moet je de volgende veranderening aanbrengen: </p>
+
+<ul>
+  <li><code>start</code>: Vervang dit woord voor het getal waar je wil beginnen met tellen.</li>
+  <li><code>eind</code>: Vervang dit woord met het getal waar je loop moet stoppen. </li>
+  <li><code>stap</code>: Vervang dit woord met hoeveel je getal moet toenemen met iedere stap.</li>
+</ul>
+
+<p>Hier bijvoorbeeld, telt de loop van 100 (maar niet inclusief honderd) tot 300 in stappen van 40: </p>
+
+<pre><code>for (let i = 100; i &lt; 300; i += 40) {
+  console.log(i);
+}
+</code></pre>
+
+<p>En deze laat alle even nummers zien vanaf 10 tot (en niet met) 50: </p>
+
+<pre><code>for (let i = 10; i &lt; 50; i += 2) {
+  console.log(i);
+}
+</code></pre>
+
+<p>Je kunt de <code>for</code> loop op deze manier dus gebruiken om de stappen in de herhaling precies te bepalen zoals jij wilt. Bijvoorbeeld:</p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let origx = 200;
+let origy = 100;
+let destx = 200;
+let desty = 300;
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+function draw() {
+    background(255);
+    fill(255);
+    strokeWeight(3);
+    for (let i = 25; i < 400; i += 25) {
+      stroke(50);
+      line(i, 200, origx, origy);
+      stroke(240);
+      line(i, 200, destx, desty);
+    }
+}
+</script> 
+
+<h2 id="random-changes">Random</h2>
+
+<p>In de voorbeelden hierboven is de herhaling volledig gecontroleerd, we bepalen exact de posities van de vormen. Het wordt leuker als niet precies vooraf bepaald wordt wat er moet gebeuren, dat maakt je programma onvoorspelbaarder en kan vaak verrassende resultaten opleveren. </p>
+
+<p>p5.js heeft een functie met de naam <code>random()</code> dat een willekeurig (random) getal genereert tussen nul en een. Bekijk de referentiepagina voor meer informatie en alternatieve manieren om de functie aan te roepen: <a href="p5js.org/reference/index.html#/p5/random" target="_blank">https://p5js.org/reference/#/p5/random</a>. Het getal dat door een random functie wordt gegenereerd zal iedere keer dat de sketch wordt gebruikt anders zijn. En ook als deze in de <code>draw()</code> staat zal het getal iedere frame anders zijn. </p>
+
+<p><code>random()</code> genereert een getal van datatype float. Kopieer en plak de volgende code tussen de <code>{</code> en <code>}</code> in <code>de setup()</code> functie in een nieuwe sketch in de editor en klik op Play: </p>
+
+<pre><code>for (let i = 0; i &lt; 10; i++) {
+    console.log(random()*10);
+}
+</code></pre>
+
+<p>De console output zal dan zoiets laten zien:</p>
+
+<pre><code>4.521091091574205
+6.131852187904645
+9.285887493521262
+7.355797053323972
+0.7867768679919429
+5.122192107561676
+2.6089046420572126
+7.510976799220195
+9.40859609432964
+8.781951443718384
+</code></pre>
+
+<p>Zoals je kunt zien print deze code 10 keer een willekeurig getal tussen 0 en 10. Maar wat als je een integer tussen 0 en 10 wilt genereren (kan soms handig zijn)? Dan kun je de output van de functie <em>typecasten</em>, dwz. de waarde veranderen naar een ander datatype. Probeer onderstaande maar eens uit: </p>
+
+<pre><code>for (let i = 0; i &lt; 10; i++) {
+    console.log(int(random()*10));
+}
+</code></pre>
+
+<p>Dan krijg je zoiets:</p>
+
+<pre><code>7
+6
+0
+3
+2
+1
+5
+2
+0
+6
+</code></pre>
+
+<p>Je kunt de <code>random()</code> functie bijvoorbeeld gebruiken om vormen op willekeurige plekken in de sketch te laten tekenen:  </p>
+
+<script type="text/p5" data-preview-width="400" data-height="400">
+function setup() {
+  createCanvas(400, 320);
+  background(50);
+}
+function draw() {
+  noStroke();
+  fill(random()*255);
+  ellipse(random()*400, random()*320, 40, 40);
+}
+</script>
+
+<p>En je ziet dat we <code>random()</code> ook gebruiken om een willekeurige grijstint voor de vulkleur in te stellen. </p>
+
+<p>Als je de <code>random()</code> functie met één getal als parameter aanroept wordt een getal gegenereerd tussen nul en de waarde van de parameter. <code>random()*255</code> doet dus precies hetzelfde als <code>random(255)</code>. </p>
+
+<p>Overigens kunnen we om de breedte en hoogte van de sketch te verkrijgen de ingebouwde variabelen <code>width</code> en <code>height</code> gebruiken, in dit geval 400 en 320. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="400">
+function setup() {
+  createCanvas(400, 320);
+  background(50);
+}
+
+function draw() {
+  noStroke();
+  fill(random(255), random(255), random(255));
+  ellipse(random(width), random(height), 40, 40);
+}
+</script>
+
+<p>Je kunt de <code>random()</code> functie ook met twee parameters gebruiken. In dat geval zal de functie een willekeurig getal geven dat tussen de waarde van de eerste en tweede parameter zit. Om een vorm te maken die "ronddoolt" over het scherm:  </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let xpos = 200;
+let ypos = 200;
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(50);
+  noFill();
+  stroke(255);
+  strokeWeight(8);
+  ellipse(xpos, ypos, 45, 45);
+  xpos += random(-2, 2);
+  ypos += random(-2, 2);
+}
+</script>
+
+<p>Als we <code>random()</code> combineren met een <code>for</code> loop kunnen we nog veel meer interessante dingen doen. In onderstaand voorbeeld controleren we de x-positie van de cirkels, maar gebruiken we willekeurige waarden voor de y-positie en de vulkleur. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="400">
+let ypos = 200;
+let xpos = 80;
+let xstep = 30;
+
+function setup() {
+  createCanvas(400, 320);
+  frameRate(2);
+}
+
+function draw() {
+  background(255);
+  noStroke();
+
+  for (let i = 0; i < 9; i++) {
+    fill(random(155, 255), random(100), random(100));
+    ellipse(xpos + (xstep * i), random(height), 20, 20);
+  }
+}
+</script>
+
+<p>Of we kunnen de <code>random()</code> functie gebruiken om willekeurig verschillende vormen te tekenen variërend in grootte, zie het volgende voorbeeld: </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let ypos = 200;
+let xpos = 80;
+let xstep = 30;
+
+function setup() {
+  createCanvas(400, 400);
+  noFill();
+  strokeWeight(2);
+  rectMode(CENTER);
+  frameRate(1);
+}
+
+function draw() {
+  background(200);
+
+  for (let i = 0; i < 9; i++) {
+    stroke(random(255), random(255), random(255));
+    let size = random(15, 45);
+    let choice = int(random(3));
+    if (choice == 0) {
+      ellipse(xpos + (xstep * i), ypos, size, size);
+    } else if (choice == 1) {
+      rect(xpos + (xstep * i), ypos, size, size);
+    } else {
+      triangle(xpos + (xstep * i), ypos - size/2, 
+              xpos + (xstep * i) + size/2, ypos + size/2,
+              xpos + (xstep * i) - size/2, ypos + size/2);
+    }
+  }
+}
+</script>
+
+<p>Probeer maar eens wat waarden aan te passen in bovenstaande voorbeelden om er een beetje gevoel voor te krijgen. Door op deze manier te programmeren geven we de controle over wat precies getekend wordt deels uit handen aan het programma. Bedenk wat je nog meer met <code>random()</code> zou kunnen doen. </p>
+
+<p>Een andere functie voor willekeur is <code>randomGaussian()</code>. Deze functie heeft twee parameters voor het gemiddelde en de standaardafwijking (hoeveel hij van het gemiddelde mag afwijken). de functie kiest vaker waardes die dicht rond het gemiddelde liggen, en minder vaak waardes die meer van het gemiddelde afwijken. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="400">
+function setup() {
+  createCanvas(400, 320);
+}
+
+function draw() {
+  background(180);
+  for (let x = 0; x < width; x++) {
+    let y = randomGaussian(height/2, 40);
+    line(x, height/2, x, y);
+  }
+}
+</script>
+
+<p>De <code>randomGaussian()</code> functie kan ook met kleuren hele interessante resultaten opleveren. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="400">
+function setup() {
+  createCanvas(400, 320);
+  background(50);
+}
+
+function draw() {
+  noStroke();
+  fill(randomGaussian(200, 50), randomGaussian(50, 25), randomGaussian(50, 25));
+  ellipse(random(width), random(height), 40, 40);
+}
+</script>
+
+<h2 id="global-local">Globale en lokale variabelen</h2>
+
+<p>In bovenstaande voorbeelden valt nog iets anders op, de variabelen zijn <em>buiten</em> de functies geplaatst. Dit noemen we <em>globale</em> variabelen. Als een variabele in een functie gedefiniëerd is noemen we dat een <em>lokale</em> variabele, en de variabele is dan <em>alleen in die functie beschikbaar</em>. Het voordeel van een <em>globale</em> variabele is dat deze <em>overal beschikbaar</em> is in je algoritme. Probeer in onderstaand voorbeeld maar eens de <code>xpos</code> en <code>ypos</code> variabelen in de <code>setup()</code> functie te plaatsen. Je zult zien dat je programma een error geeft, want de <code>draw()</code> functie kan de variabelen niet vinden, ze bestaan daar eenvoudigweg niet.</p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+let xpos = 200;
+let ypos = 200;
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(50);
+  noFill();
+  stroke(255);
+  strokeWeight(8);
+  ellipse(xpos, ypos, 45, 45);
+  xpos += random(-2, 2);
+  ypos += random(-2, 2);
+}
+</script>
+
+
+      </article>
+    </main>
+      
+  <footer class="footer">
+  <small>
+    &copy; <time datetime="2022-04-23T19:20:00-04:00">2022</time>. De tekst van deze site is onder een
+     <a rel="license"
+        href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+        Commons Attribution-NonCommercial 4.0 International License</a>. Enkele delen van deze tekst zijn overgenomen uit de vertaling door <a href="https://www.visualeditor.nl/">Marijn van der Meer</a> van een tutorial van <a href="https://creative-coding.decontextualize.com/">Allison Parrish</a> en door mijzelf vertaalde tutorials van <a href="https://happycoding.io/tutorials/p5js/">Happy Coding</a>. 
+        Bovendien zijn de code voorbeelden onder een: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 licentie</a>.
+        Deze pagina gebruikt de P5-widget, die <a href="https://toolness.github.io/p5.js-widget/"> hier </a> te vinden is. <br><br>
+  </small>
+</footer>  
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<title>KunstGenerator | creatief coderen met algoritmiek in p5.js.</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/poole.css">
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" href="css/menu.css">
+
+<!-- icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest.html">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<!-- RSS -->
+<link rel="alternate" type="application/atom+xml" title="Creative Coding" href="../../atom.xml.html">
+<!-- load p5 inline widget -->
+<script src="https://toolness.github.io/p5.js-widget/p5-widget.js"></script></head>
+
+
+<body>
+  <ul class="sidenav">
+    <li><a  href="index.php.html">Introductie</a></li>
+    <li><a class='active' href="01VormenKleuren.php.html"><em>Week 2</em>: Vormen en kleuren</a></li>
+    <li><a  href="01Opdracht.php.html">Opdracht: Emoji</a></li>
+    <li><a  href="01Extra.php.html">Extra: Emoji Generator</a></li>
+    <li><a  href="02LoopRandom.php.html"><em>Week 3</em>: Herhaling en willekeur</a></li>
+    <li><a  href="02Loops.php.html">Meer herhaling</a></li>
+    <li><a  href="02Opdracht.php.html">Opdrachten: Loops en random</a></li>
+    <li><a  href="03Voorbeelden.php.html"><em>Week 4</em>: Voorbeelden aanpassen</a></li>
+    <li><a  href="05Arrays.php.html">Arrays en transformaties</a></li>
+    <li><a  href="07Objects.php.html"><em>Week 5</em>: Objecten</a></li>
+    <li><a  href="07Opdracht.php.html">Opdrachten: Objecten</a></li>
+    <li><a  href="08Animatie.php.html"><em>Week 6</em>: Animatie</a></li>
+    <li><a  href="08Opdracht.php.html">Experimenteren met animatie</a></li>
+    <li><a  href="09Interactie.php.html"><em>Week 7</em>: Interactie</a></li>
+    <li><a  href="09Opdracht.php.html">Experimenteren met interactie</a></li>
+    <li><a  href="10Animatie.php.html">Meer animatie</a></li>
+    <li><a  href="10Opdracht.php.html"><em>Eindopdracht</em>: Generatief kunstwerk</a></li>
+    <hr>
+    <li><a href="https://editor.p5js.org/" target="_blank">p5 webeditor</a></li>
+    <li><a href="https://p5js.org/reference/" target="_blank">Referentie</a></li>
+    <li><a href="https://p5js.org/examples/" target="_blank">Voorbeelden</a></li>
+    <li><a href="https://www.youtube.com/user/shiffman/playlists?sort=dd&shelf_id=14&view=50" target="_blank">The Coding Train</a></li>
+    <li><a href="https://coolors.co/generate" target="_blank">Coolors</a></li>
+</ul>
+  <div class="container content">
+    <main>
+      <article class="page">
+
+<h1 class="page-title">Vormen en kleuren</h1>
+
+<p>Deze tutorial helpt je door de eerste stappen om je eerste <a href="http://p5js.org" target="_blank">p5.js</a> schets te maken. </p><br>
+
+<h2 id="your-first-sketch">Je eerste sketch</h2>
+
+<p>Ok, klik maar op de 'play' knop hieronder. </p>
+
+<script type="text/p5" data-preview-width="300" data-height="280">
+function setup() {
+  // createCanvas(breedte, hoogte)
+  createCanvas(300, 200);
+}
+
+function draw() {
+  // rect(x, y, breedte, hoogte)
+  rect(20, 20, 80, 60);
+}
+</script>
+
+<p>Gefeliciteerd! Je hebt een rechthoek getekend in p5.js. Of, nou ja, de code stond al klaar voor je.. </p>
+
+<h3>Hoe werkt dit nu precies?</h3>
+
+<ul>
+  <li>p5.js werkt met een assenstelsel. De X-as loopt van links naar rechts, de Y-as van boven naar beneden en de eenheden zijn natuurlijk pixels. </li>
+  <li>p5.js laat in de editor twee standaard functies zien, <code>setup()</code> en <code>draw()</code>. Hierin schrijf je je code. Alles in setup() wordt <em>één keer</em> uitgevoerd, namelijk als je je programma start, alles in draw() wordt <em>herhaaldelijk</em> uitgevoerd, normaal gesproken 60 keer per seconde want de framerate in p5.js staat standaard ingesteld op 60fps. </li>
+  <li><code>createCanvas(300, 300);</code> en <code>rect(20, 20, 80, 60);</code> noemen we <em>function calls</em>. p5.js heeft een heleboel ingebouwde functies die verschillende taken kunnen uitvoeren, zoals bijvoorbeeld vormen op het scherm tekenen of je tekeninstellingen aanpassen. Het leren programmeren in p5.js is voornamelijk het leren gebruiken van deze commando's en ontdekken wat ze doen. De <code>createCanvas</code> functie stelt de grootte van je tekening in, en de <code>rect</code> functie tekent zoals je ziet een rechthoek op het scherm. </li>
+  <li><code>rect</code> is de <em>naam</em> van de functie. Functienamen worden altijd direct gevolgd door twee haakjes; tussen deze haakjes kunnen (en soms moeten) een of meerdere waardes, gescheiden door komma's. Deze waardes heten de <em>parameters</em> van een functie. Iedere functie gebruikt de parameters op een iets andere manier en je moet dus ontdekken of opzoeken wat de parameters van een functie betekenen. </li>
+  <li>Boven de <code>rect</code> zie je waar elke parameter van de functie voor staat. X positie, Y positie, breedte en hoogte (je ziet 2 slashes voor deze code staan, en de tekst kleurt grijs. Dat noemen we een 'comment', dwz. deze code wordt niet uitgevoerd, het staat er alleen als hulpmiddel). De waarden in de parameters van je functie kun je dus aanpassen om rechthoeken (of vierkanten) van verschillende grootte op verschillende posities te tekenen. Probeer maar en klik weer op <em>Play</em> om de code uit te voeren. </li>
+</ul>
+
+<p>Je kan een enorme lijst met alle p5.js functies vinden op de <a href="http://p5js.org/reference/" target="_blank">p5.js
+referentiepagina</a> (Iedere programmeertaal heeft ergens een referentielijst staan met de ingebouwde functies). Voor nu gaan we alleen nog aan de slag met de meest simpele functies die vormen op het scherm tekenen. Later zullen we ook andere functies gaan gebruiken die meer interessante dingen kunnen. </p>
+
+<h2 id="add-shapes">Vormen tekenen</h2>
+
+<p>p5.js heeft verschillende ingebouwde functies om geometrische vormen te tekenen.</p> 
+
+<p>Als je je vormen maar één keer wilt tekenen kun je de <code>noLoop()</code> functie gebruiken in <code>setup()</code>. De <code>draw()</code> functie wordt dan maar één keer uitgevoerd ipv. continu. </p>
+
+<p>Voor een ellips gebruik je <code>ellipse()</code>, voor een lijn <code>line()</code> en voor een driehoek <code>triangle()</code> In de comments zie je de betekenissen van de parameters. </p>
+
+<script type="text/p5" data-preview-width="300" data-height="380">
+function setup() {
+  createCanvas(300, 300);
+  noLoop();
+}
+
+function draw() {
+  // rect(x, y, breedte, hoogte)
+  rect(20, 20, 80, 100);
+  // ellipse(x, y, breedte, hoogte)
+  ellipse(80, 80, 60, 60);
+  // line(x1, y1, x2, y2)
+  line(30, 70, 120, 140);
+  // triangle(x1, y1, x2, y2, x3, y3)
+  triangle(30, 135, 58, 80, 86, 135);
+}
+</script>
+
+<p>Kijk wat er gebeurt als je wat getallen verandert. En misschien valt het je op dat de vormen worden getekend in de volgorde waarin de functies worden aangeroepen. De <em>volgorde</em> is dus heel belangrijk bij het schrijven van een algoritme. Probeer maar eens wat functies in een andere volgorde te zetten. </p>
+
+<script type="text/p5" data-preview-width="200" data-height="280">
+function setup() {
+  createCanvas(200, 200);
+  noLoop();
+}
+
+function draw() {
+  ellipse(50, 40, 45, 45);
+  rect(50, 40, 30, 50);
+}
+</script>
+
+<p>Je ziet dat de <code>ellipse</code> en de <code>rect</code> dezelfde x- en y-positie hebben, toch worden ze op een ander plek getekend. Dat komt doordat de ellipse standaard vanuit het middelpunt getekend wordt, terwijl de rect standaard vanuit de linkerbovenhoek getekend wordt. Maar dit kun je instellen. Als je wilt dat de rechthoek ook vanuit het middelpunt getekend wordt, roep je de functie <code>rectMode(CENTER)</code> aan. Dit is een <em>instelling</em> in p5js, dwz. je programma behoudt deze instelling totdat je hem weer aanpast. </p>
+
+<script type="text/p5" data-preview-width="200" data-height="280">
+function setup() {
+  createCanvas(200, 200);
+  noLoop();
+}
+
+function draw() {
+  ellipse(50, 40, 45, 45);
+  rectMode(CENTER);
+  rect(50, 40, 30, 50);
+}
+</script>
+
+<p>Je kunt ook een rechthoek tekenen met afgeronde hoeken door een vijfde parameter <code>rect()</code> te gebruiken. </p>
+
+<script type="text/p5" data-preview-width="200" data-height="280">
+function setup() {
+  createCanvas(200, 200);
+  noLoop();
+}
+
+function draw() {
+  rectMode(CENTER);
+  // rect(x, y, breedte, hoogte, afronding)
+  rect(50, 50, 80, 60, 8);
+}
+</script>
+
+<p>Om een segment van een ellips of cirkel te tekenen kun je de functie <code>arc()</code> gebruiken met ingebouwde waarden voor pi. </p>
+
+<script type="text/p5" data-preview-width="200" data-height="320">
+function setup() {
+  createCanvas(200, 240);
+  noLoop();
+}
+
+function draw() {
+  // arc(x, y, w, h, begin segment, einde segment)
+  arc(50, 55, 30, 30, 0, HALF_PI);
+  arc(50, 55, 50, 50, HALF_PI, PI);
+  arc(50, 55, 70, 70, PI, PI + QUARTER_PI);
+  arc(50, 55, 80, 80, PI + QUARTER_PI, TWO_PI);
+}
+</script>
+
+<p>Probeer de waarden van de segment parameters maar eens aan te passen om erachter te komen waar je begint en eindigt met tekenen. </p>
+
+<h2 id="other-shapes">Andere vormen</h2>
+
+<p>Er zijn nog meer functies om vormen te maken. Elke functie werkt weer net iets anders en de parameters betekenen ook vaak weer iets anders. Dat kan je allemaal opzoeken in de referentiepagina's. Daar staat per functie informatie en de instructie hoe ze te gebruiken. Hier vind je alle functies voor vormen in p5js: <a href="https://p5js.org/reference/#group-Shape" target="_blank">p5js.org/reference/#group-Shape</a>
+
+<h2 id="background-color">Kleuren</h2>
+
+<p>De <code>background()</code> functie bepaalt de achtergrondkleur voor de hele sketch. 
+Roep deze als eerste aan in de <code>draw()</code> functie want dat moet gebeuren voordat je je vormen tekent.</p>
+
+<script type="text/p5" data-preview-width="200" data-height="280">
+function setup() {
+  createCanvas(200, 200);
+  noLoop();
+}
+
+function draw() {
+  // background(grayScale);
+  background(100);
+  ellipse(50, 50, 60, 60);
+  rect(40, 40, 35, 45);
+}
+</script>
+
+<p>Je ziet dat hier voor de <code>background</code> maar 1 parameter is ingevuld. Die waarde bepaalt de grijswaarde van de achtergrond. 0 is zwart en 255 is wit; ergens ertussenin geeft een grijswaarde. </p>
+
+<p>Als je de <code>background</code> functie met <em>drie</em> parameters aanroept dan kun je een RGB waarden invullen. De parameters corresponderen met de Rood, Groen en Blauw waarde. </p>
+
+<p>Een goede plek om RGB kleurencodes te vinden is hier: <a href="https://www.w3schools.com/colors/colors_rgb.asp" target="_blank">www.w3schools.com/colors/colors_rgb.asp</a></p>
+
+<script type="text/p5" data-preview-width="200" data-height="280">
+function setup() {
+  createCanvas(200, 200);
+  noLoop();
+}
+
+function draw() {
+  // background(r, g, b);
+  background(100, 149, 237);
+  ellipse(50, 50, 60, 60);
+  rect(40, 40, 35, 45);
+}
+</script>
+
+<p>Ook kun je HEX kleuren gebruiken. Je roept de <code>background</code> dan weer aan met 1 parameter, en de hex kleur schrijf je dan tussen apostrofs. </p>
+
+<p>HEX kleurencodes vindt je bijvoorbeeld hier: <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp" target="_blank">www.w3schools.com/colors/colors_hexadecimal.asp</a></p>
+
+<script type="text/p5" data-preview-width="200" data-height="280">
+function setup() {
+  createCanvas(200, 200);
+  noLoop();
+}
+
+function draw() {
+  // background('#hex');
+  background('#bd30d3');
+  ellipse(50, 50, 60, 60);
+  rect(40, 40, 35, 45);
+}
+</script>
+
+<p>En dan kun je ook nog HSB kleuren gebruiken. HSB staat voor Hue (tint, 0-360), Saturation (verzadiging, 0-100), Brightness (helderheid, 0-100). Dit kleurenmodel is erg handig als je bijvoorbeeld alleen pastelkleuren in je sketch wilt gebruiken, of alleen lichte of donkere of harde kleuren. Je kunt dan de waardes voor S en B hetzelfde houden en alleen de H waarde veranderen. Om HSB kleuren te gebruiken moet je wel eerst de <code>colorMode()</code> aanpassen. Dit is net als <code>rectMode()</code> een <em>instelling</em> in p5js. </p>
+
+<p>Een HSB color picker vind je hier: <a href="https://codepen.io/HunorMarton/details/eWvewo" target="_blank">codepen.io/HunorMarton/details/eWvewo</a></p>
+
+<script type="text/p5" data-preview-width="200" data-height="320">
+function setup() {
+  createCanvas(200, 240);
+  noLoop();
+}
+
+function draw() {
+  // wijzig de kleurmodus naar HSB
+  colorMode(HSB);
+  background(300, 60, 100);
+  // zet de kleurmodus terug naar RGB
+  colorMode(RGB);
+  ellipse(50, 50, 60, 60);
+  rect(40, 40, 35, 45);
+}
+</script>
+
+<p>Hier vind je een kleurenpalet generator waarmee je bij elkaar passende kleuren kunt genereren om te gebruiken in je projecten: <a href="https://coolors.co/generate" target="_blank">coolors.co/generate</a> (klik de spacebar voor nieuwe kleuren)</p>
+
+<h2 id="fill-and-stroke">Fill en stroke</h2>
+
+<p>Je vormen en lijnen die je tekent kun je natuurlijk ook een kleur geven. De vulkleur kan je bepalen met de <code>fill()</code> functie. De parameters voor de kleuren werken op dezelfde manier als voor de <code>background()</code> functie. De vulkleur kan je bepalen met de <code>fill()</code> functie, en de lijnkleur met de <code>stroke()</code> functie. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+function setup() {
+  createCanvas(400, 400); 
+  noLoop(); 
+}
+
+function draw() {
+  background(100);
+  fill(252, 108, 133);
+  stroke(54, 119, 238);
+  ellipse(170, 150, 250, 250);
+  rect(150, 95, 200, 250);
+}
+</script>
+
+<p>Hierbij is de volgorde weer van belang. <code>fill()</code> en <code>stroke()</code> zijn ook weer <em>instellingen</em> in p5js, je stelt dus eerst de vulkleur en/of lijnkleur in, daarna teken je de vorm. Als je voor een volgende vorm bijvoorbeeld een ander vulkleur wilt gebruiken dan stel je de <code>fill()</code> opnieuw in. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+function setup() {
+  createCanvas(400, 400); 
+  noLoop(); 
+}
+
+function draw() {
+  background(100, 149, 237);
+  fill(252, 108, 133);
+  ellipse(170, 150, 250, 250);
+  fill(54, 119, 238);
+  rect(150, 95, 200, 250);
+}
+</script>
+
+<p>Dan is er nog een functie <code>strokeWeight()</code> die de <em>dikte</em> van de lijn bepaalt. Ook dit is een instelling. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+function setup() {
+  createCanvas(400, 400);  
+  noLoop();
+}
+
+function draw() {
+  background(100, 149, 237);
+  strokeWeight(20);
+  stroke(252, 108, 133);
+  ellipse(170, 150, 250, 250);
+  stroke(240);
+  rect(150, 95, 200, 250);
+}
+</script>
+
+<p>Mocht je helemaal geen lijn om je vorm willen bestaat er ook nog de functie <code>noStroke()</code> Probeer deze maar eens in de onderstaande code ergens toe te passen. En <code>noFill()</code>, probeer die ook meteen maar. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+function setup() {
+  createCanvas(400, 400);  
+  noLoop();
+}
+
+function draw() {
+  background('#54494B');
+  strokeWeight(10);
+  stroke('#7E8287');
+  fill('#9DA39A');
+  rect(50, 50, 100, 100);
+  strokeWeight(5);
+  stroke('#9DA39A');
+  fill('#B98389');
+  ellipse(200, 200, 250, 250);
+  strokeWeight(10);
+  stroke('#B98389');
+  fill('#DB2955');
+  rect(250, 250, 100, 100);
+}
+</script>
+
+<h2 id="other-shapes">Kleuren mengen</h2>
+
+<p>Je kunt de vulkleur of lijnkleur ook transparant (doorzichtig) maken door een extra parameter te gebruiken in <code>fill()</code> of <code>stroke()</code>. De transparantie loopt van 0-255, waarbij 0 volledig transparant is en 255 volledig gevuld. Op deze manier kun je dus kleuren mengen om nieuwe kleuren te verkrijgen, zie onderstaand voorbeeld. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+function setup() {
+  createCanvas(400, 400); 
+  noLoop();
+  noStroke();
+}
+
+function draw() {
+  background(200);
+  fill(254, 185, 95, 240);
+  ellipse(140, 160, 200, 200);
+  fill(9, 4, 70, 160);
+  ellipse(260, 160, 200, 200);
+  fill(247, 23, 53, 160);
+  ellipse(200, 260, 200, 200);
+}
+</script>
+
+<p>En dan zijn er ook nog verschillende manieren waarop je de kleuren kunt mengen, dat heet de <code>blendMode()</code>. Alle opties vind je hier: <a href="https://p5js.org/reference/#/p5/blendMode" target="_blank">p5js.org/reference/#/p5/blendMode</a>. Probeer maar eens te experimenteren met de verschillende blendModes in onderstaand voorbeeld. </p>
+
+<script type="text/p5" data-preview-width="400" data-height="480">
+function setup() {
+  createCanvas(400, 400); 
+  noLoop();
+  noStroke();
+  blendMode(BURN);
+}
+
+function draw() {
+  background(200);
+  fill(254, 185, 95, 240);
+  ellipse(140, 160, 200, 200);
+  fill(9, 4, 70, 160);
+  ellipse(260, 160, 200, 200);
+  fill(247, 23, 53, 160);
+  ellipse(200, 260, 200, 200);
+}
+</script>
+
+<h2 id="when-something-goes-wrong">Als er iets fout gaat.</h2>
+
+<p>Programmeren is een precies werkje, en het is heel makkelijk om een fout te maken in de syntax (de regels hoe de opdrachten gegeven moeten worden, zoals grammatica bij een reguliere taal). Zeker in het begin zal je heel veel syntaxfouten maken en een programma werkt vaak helemaal niet als je een foutje maakt bij het typen. Een docent kan zich ergeren of misschien een rode streep zetten door een "dt" fout, maar kan je werkstuk verder wel lezen en begrijpen. Een computer stopt bij de fout en weigert veelal het programma verder uit te voeren. </p>
+
+<p>Maar als er iets fout gaat krijg je vaak wel een foutmelding, een <em>error
+message</em>. De foutmelding verschijnt in de "console". Hier het kleine vakje onderaan de code editor. </p>
+
+<p>Als je het probleem niet kan vinden raak dan niet meteen in paniek! De foutmelding geeft je een aantal aanwijzingen. Het nummer aan het begin van de foutmelding is het regelnummer waar p5.js denkt dat de fout zit (en als dat niet het geval is zit de fout daar meestal wel bij in de buurt). En de foutmelding geeft je vaak wel een idee wat voor fout er gemaakt is. Alleen zal je wel moeten wennen aan de omschrijving die de computer geeft aan de fout.</p>
+
+<p><img src="assets/01_error_message.png" alt="Screenshot of web editor showing an error message, &quot;Reference Error:
+crateCanvas is not defined&quot;" /></p>
+
+<p>Deze foutmelding laat zien dat er een probleem is in regel 2: per ongeluk heb ik <code>crateCanvas</code> geschreven in plaats van <code>createCanvas</code>, en JavaScript helpt mij door te vertellen dat het geen idee heeft wat <code>crateCanvas</code> is. (Dat is het geval wanneer JavaScript zegt dat iets “is not defined,”. JavaScript kent alleen opdrachten, variabelen en functies die bepaald zijn door iemand, jijzelf of iemand anders in een library. Maar niemand heeft nog de functie <code>crateCanvas</code> gemaakt, hij bestaat niet dus loopt je programma vast. </p>
+
+<h2 id="sharing-your-work">Je werk delen</h2>
+
+<p>Vanuit de webeditor kun je je werk direct delen. In het <code>File</code> menu van de webeditor, selecteer je <code>Share</code>. Dan krijg je een drietal keuzes:</p>
+
+<ul>
+  <li>Embed: Als je al een website hebt kan je hoogstwaarschijnlijk dit codeblok kopiëren en en plakken in je eigen blog of website. (De code is een <code>iframe</code>, dat is een HTML tag dat de webbrowser content kan laten zien van een andere website midden op de pagina van een andere site).</li>
+  <li>Fullscreen: Deze URL (webadres) leidt naar een versie van je sketch die alleen de output van de code laat zien, dus de "preview" op een verder leeg scherm.</li>
+  <li>Edit: Dit linkt naar je sketch in de webeditor. Zo kan je ook de code laten zien die je geschreven hebt. </li>
+</ul>
+
+      </article>
+    </main>
+      
+  <footer class="footer">
+  <small>
+    &copy; <time datetime="2022-04-23T19:20:00-04:00">2022</time>. De tekst van deze site is onder een
+     <a rel="license"
+        href="http://creativecommons.org/licenses/by-nc/4.0/">Creative
+        Commons Attribution-NonCommercial 4.0 International License</a>. Enkele delen van deze tekst zijn overgenomen uit de vertaling door <a href="https://www.visualeditor.nl/">Marijn van der Meer</a> van een tutorial van <a href="https://creative-coding.decontextualize.com/">Allison Parrish</a> en door mijzelf vertaalde tutorials van <a href="https://happycoding.io/tutorials/p5js/">Happy Coding</a>. 
+        Bovendien zijn de code voorbeelden onder een: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 licentie</a>.
+        Deze pagina gebruikt de P5-widget, die <a href="https://toolness.github.io/p5.js-widget/"> hier </a> te vinden is. <br><br>
+  </small>
+</footer>  
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script/sketchui.js"></script>
+
+</body>
+</html>
