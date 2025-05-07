@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<title>P5.js Art Beginner - Opdracht Emoji</title>
+<meta name="title" content="P5.js Art Beginner - Opdracht Emoji" />
+<meta name="description" content="Interactive art project using p5.js - Emoji Assignment" />
+<meta name="keywords" content="p5.js, art, interactive, generative art, creative coding" />
+<meta name="robots" content="index, follow" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="media/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="media/images/favicon-16x16.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- P5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<!-- p5.js-widget -->
+<script src="https://toolness.github.io/p5.js-widget/widget.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Opdracht: Maak je eigen Emoji</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Introductie</a></li>
+                <li><a href="vormen-kleuren.html">Vormen en Kleuren</a></li>
+                <li><a href="opdracht-emoji.html">Opdracht Emoji</a></li>
+                <li><a href="extra-emoji.html">Extra Emoji Generator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>De Opdracht</h2>
+            <p>Maak je eigen emoji met P5.js! Gebruik de basisvormen die je hebt geleerd om een emoji te maken. Je kunt kiezen uit:</p>
+            <ul>
+                <li>Een blij gezicht 😊</li>
+                <li>Een verdrietig gezicht 😢</li>
+                <li>Een verbaasd gezicht 😮</li>
+                <li>Of maak je eigen creatie!</li>
+            </ul>
+        </section>
+
+        <section class="examples">
+            <h2>Voorbeeld: Emoji</h2>
+            <iframe src="https://toolness.github.io/p5.js-widget/p5-widget.html?id=1&amp;previewWidth=300&amp;baseSketchURL=https%3A%2F%2Fvisualdata.org%2Fp5js%2Fca6%2Fnull&amp;sketch=%0Afunction%20setup()%20%7B%0A%20%20%2F%2F%20createCanvas(breedte%2C%20hoogte)%0A%20%20createCanvas(300%2C%20200)%3B%0A%7D%0A%0Afunction%20draw()%20%7B%0A%20%20%2F%2F%20rect(x%2C%20y%2C%20breedte%2C%20hoogte)%0A%20%20rect(20%2C%2020%2C%2080%2C%2060)%3B%0A%7D%0A" style="width: 100%; background-color: white; border: 1px solid #ec245e; box-sizing: border-box; min-height: 280px"></iframe>
+            
+            <div class="controls">
+                <button onclick="changeFaceColor()">Verander Gezichtskleur</button>
+                <button onclick="changeEyeStyle()">Verander Oogstijl</button>
+                <button onclick="changeMouthStyle()">Verander Mondstijl</button>
+            </div>
+        </section>
+
+        <section class="code">
+            <h2>Tips</h2>
+            <ul>
+                <li>Begin met een gele cirkel voor het gezicht</li>
+                <li>Gebruik ellipses voor de ogen</li>
+                <li>Maak een boog voor de mond met arc()</li>
+                <li>Experimenteer met verschillende kleuren!</li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<!-- Your p5.js sketch -->
+<script src="js/emoji-sketch.js"></script>
+
+</body>
+</html> 

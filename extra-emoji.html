@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<title>P5.js Art Beginner - Extra Emoji Generator</title>
+<meta name="title" content="P5.js Art Beginner - Extra Emoji Generator" />
+<meta name="description" content="Interactive art project using p5.js - Extra Emoji Generator" />
+<meta name="keywords" content="p5.js, art, interactive, generative art, creative coding" />
+<meta name="robots" content="index, follow" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="media/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="media/images/favicon-16x16.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- P5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<!-- p5.js-widget -->
+<script src="https://toolness.github.io/p5.js-widget/widget.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Extra: Emoji Generator</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Introductie</a></li>
+                <li><a href="vormen-kleuren.html">Vormen en Kleuren</a></li>
+                <li><a href="opdracht-emoji.html">Opdracht Emoji</a></li>
+                <li><a href="extra-emoji.html">Extra Emoji Generator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Maak je eigen Emoji Generator</h2>
+            <p>In deze extra opdracht ga je een interactieve emoji generator maken. Je kunt verschillende elementen aanpassen:</p>
+            <ul>
+                <li>Grootte van het gezicht</li>
+                <li>Kleur van het gezicht</li>
+                <li>Vorm van de ogen</li>
+                <li>Vorm van de mond</li>
+                <li>Extra elementen zoals haren of oren</li>
+            </ul>
+        </section>
+
+        <section class="examples">
+            <h2>Voorbeeld: Extra Emoji Generator</h2>
+            <script type="text/p5" data-height="400">
+let faceColor = '#FFD700';
+let eyeStyle = 'happy';
+let mouthStyle = 'smile';
+let accessories = [];
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(240);
+  
+  // Draw face
+  fill(faceColor);
+  noStroke();
+  ellipse(width/2, height/2, 200, 200);
+  
+  // Draw eyes
+  fill(0);
+  if (eyeStyle === 'happy') {
+    // Happy eyes
+    arc(width/2 - 50, height/2 - 20, 30, 30, PI, 0);
+    arc(width/2 + 50, height/2 - 20, 30, 30, PI, 0);
+  } else if (eyeStyle === 'sad') {
+    // Sad eyes
+    arc(width/2 - 50, height/2 - 20, 30, 30, 0, PI);
+    arc(width/2 + 50, height/2 - 20, 30, 30, 0, PI);
+  } else {
+    // Normal eyes
+    ellipse(width/2 - 50, height/2 - 20, 30, 30);
+    ellipse(width/2 + 50, height/2 - 20, 30, 30);
+  }
+  
+  // Draw mouth
+  fill(0);
+  if (mouthStyle === 'smile') {
+    arc(width/2, height/2 + 30, 100, 50, 0, PI);
+  } else if (mouthStyle === 'sad') {
+    arc(width/2, height/2 + 30, 100, 50, PI, 0);
+  } else {
+    line(width/2 - 50, height/2 + 30, width/2 + 50, height/2 + 30);
+  }
+  
+  // Draw accessories
+  for (let acc of accessories) {
+    fill(acc.color);
+    if (acc.type === 'hat') {
+      triangle(
+        width/2 - 100, height/2 - 100,
+        width/2, height/2 - 150,
+        width/2 + 100, height/2 - 100
+      );
+    } else if (acc.type === 'glasses') {
+      rect(width/2 - 80, height/2 - 30, 40, 10);
+      rect(width/2 + 40, height/2 - 30, 40, 10);
+      line(width/2 - 40, height/2 - 25, width/2 + 40, height/2 - 25);
+    }
+  }
+}
+
+function changeFaceColor() {
+  faceColor = color(random(255), random(255), random(255));
+}
+
+function changeEyeStyle() {
+  let styles = ['happy', 'sad', 'normal'];
+  eyeStyle = random(styles);
+}
+
+function changeMouthStyle() {
+  let styles = ['smile', 'sad', 'normal'];
+  mouthStyle = random(styles);
+}
+
+function addAccessory(type) {
+  accessories.push({
+    type: type,
+    color: color(random(255), random(255), random(255))
+  });
+}
+            </script>
+            <div class="controls">
+                <button onclick="changeFaceColor()">Verander Gezichtskleur</button>
+                <button onclick="changeEyeStyle()">Verander Oogstijl</button>
+                <button onclick="changeMouthStyle()">Verander Mondstijl</button>
+                <button onclick="addAccessory('hat')">Voeg Hoed Toe</button>
+                <button onclick="addAccessory('glasses')">Voeg Bril Toe</button>
+            </div>
+        </section>
+
+        <section class="code">
+            <h2>Tips voor Geavanceerde Functies</h2>
+            <ul>
+                <li>Gebruik sliders voor vloeiende overgangen</li>
+                <li>Voeg animaties toe met frameCount</li>
+                <li>Experimenteer met verschillende vormen en patronen</li>
+                <li>Maak gebruik van random() voor unieke variaties</li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<!-- Your p5.js sketch -->
+<script src="js/extra-emoji-sketch.js"></script>
+
+</body>
+</html> 

@@ -1,1 +1,66 @@
 html{box-sizing:border-box;border-collapse:collapse;line-height:1}*{border-collapse:inherit}*,:after,:before{box-sizing:inherit}:not(body){background-repeat:no-repeat;background-position:50%;background-size:cover}[hidden]{display:none!important}body,html,menu,ol,ul{padding:0;margin:0}menu,ol,ul{list-style:none}li{margin:0;padding:0}a{color:inherit}p,small{padding:0}figure,form,p,small{margin:0}fieldset{border:none;margin:0;padding:0}
+
+/* Additional styles for specific components */
+
+/* Code examples */
+pre {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #sketch-container {
+        height: 300px;
+    }
+}
+
+/* Print styles */
+@media print {
+    nav, .button {
+        display: none;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+}

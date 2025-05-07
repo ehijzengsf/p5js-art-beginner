@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<title>P5.js Art Beginner - Vormen en Kleuren</title>
+<meta name="title" content="P5.js Art Beginner - Vormen en Kleuren" />
+<meta name="description" content="Interactive art project using p5.js - Shapes and Colors" />
+<meta name="keywords" content="p5.js, art, interactive, generative art, creative coding" />
+<meta name="robots" content="index, follow" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="media/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="media/images/favicon-16x16.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- P5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<!-- p5.js-widget -->
+<script src="https://toolness.github.io/p5.js-widget/widget.js"></script>
+
+<style>
+.editor-container {
+    display: flex;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.code-editor {
+    flex: 1;
+    height: 400px;
+    font-family: monospace;
+    padding: 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.canvas-container {
+    flex: 1;
+    height: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.run-button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.run-button:hover {
+    background: #45a049;
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Vormen en Kleuren</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Introductie</a></li>
+                <li><a href="vormen-kleuren.html">Vormen en Kleuren</a></li>
+                <li><a href="opdracht-emoji.html">Opdracht Emoji</a></li>
+                <li><a href="extra-emoji.html">Extra Emoji Generator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Basisvormen in P5.js</h2>
+            <p>In P5.js kunnen we verschillende basisvormen tekenen:</p>
+            <ul>
+                <li>ellipse() - voor cirkels en ovalen</li>
+                <li>rect() - voor rechthoeken en vierkanten</li>
+                <li>triangle() - voor driehoeken</li>
+                <li>line() - voor lijnen</li>
+            </ul>
+        </section>
+
+        <section class="examples">
+            <h2>Voorbeeld: Vormen en Kleuren</h2>
+            <div class="editor-container">
+                <textarea id="code-editor" class="code-editor">let currentShape = 'circle';
+let currentColor = '#FF6B6B';
+let shapes = [];
+
+function setup() {
+  createCanvas(400, 400);
+  background(240);
+}
+
+function draw() {
+  background(240);
+  for (let shape of shapes) {
+    fill(shape.color);
+    noStroke();
+    if (shape.type === 'circle') {
+      ellipse(shape.x, shape.y, shape.size);
+    } else if (shape.type === 'square') {
+      rect(shape.x - shape.size/2, shape.y - shape.size/2, shape.size, shape.size);
+    } else {
+      triangle(
+        shape.x, shape.y - shape.size/2,
+        shape.x - shape.size/2, shape.y + shape.size/2,
+        shape.x + shape.size/2, shape.y + shape.size/2
+      );
+    }
+  }
+}
+
+function mousePressed() {
+  shapes.push({
+    x: mouseX,
+    y: mouseY,
+    size: 50,
+    color: currentColor,
+    type: currentShape
+  });
+}
+
+function changeShape(type) {
+  currentShape = type;
+}
+
+function changeColor(color) {
+  currentColor = color;
+}</textarea>
+                <div id="canvas-container" class="canvas-container"></div>
+            </div>
+            <button class="run-button" onclick="runCode()">Run Code</button>
+            <div class="controls">
+                <button onclick="changeShape('circle')">Cirkel</button>
+                <button onclick="changeShape('square')">Vierkant</button>
+                <button onclick="changeShape('triangle')">Driehoek</button>
+                <button onclick="changeColor('#FF6B6B')">Rood</button>
+                <button onclick="changeColor('#4ECDC4')">Groen</button>
+                <button onclick="changeColor('#45B7D1')">Blauw</button>
+            </div>
+        </section>
+
+        <section class="code">
+            <h2>Code Voorbeeld</h2>
+            <pre><code>// Basisvormen tekenen
+ellipse(100, 100, 50, 50);  // cirkel
+rect(200, 75, 50, 50);      // vierkant
+triangle(300, 100, 275, 150, 325, 150);  // driehoek
+
+// Kleuren instellen
+fill(255, 0, 0);    // rood
+stroke(0);          // zwarte rand
+strokeWeight(2);    // rand dikte</code></pre>
+        </section>
+    </main>
+</div>
+
+<!-- Your p5.js sketch -->
+<script src="js/sketch.js"></script>
+
+<script>
+let currentSketch = null;
+
+function runCode() {
+    // Remove existing sketch if any
+    if (currentSketch) {
+        currentSketch.remove();
+    }
+
+    // Clear the canvas container
+    const container = document.getElementById('canvas-container');
+    container.innerHTML = '';
+
+    // Get the code from the editor
+    const code = document.getElementById('code-editor').value;
+
+    // Create a new function from the code
+    const sketchFunction = new Function(`
+        return function(p) {
+            with(p) {
+                ${code}
+            }
+        }
+    `)();
+
+    // Create new p5 instance
+    currentSketch = new p5(sketchFunction, container);
+}
+
+// Run the code initially
+window.onload = runCode;
+</script>
+
+</body>
+</html> 

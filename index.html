@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<title>P5.js Art Beginner - Week 1: Vormen en Kleuren</title>
+<meta name="title" content="P5.js Art Beginner - Week 1: Vormen en Kleuren" />
+<meta name="description" content="Interactive art project using p5.js - Week 1: Shapes and Colors" />
+<meta name="keywords" content="p5.js, art, interactive, generative art, creative coding" />
+<meta name="robots" content="index, follow" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="media/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="media/images/favicon-16x16.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- P5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<style>
+.editor-container {
+    display: flex;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.code-editor {
+    flex: 1;
+    height: 400px;
+    font-family: monospace;
+    padding: 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.canvas-container {
+    flex: 1;
+    height: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.run-button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.run-button:hover {
+    background: #45a049;
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <h1>Week 1: Vormen en Kleuren</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Introductie</a></li>
+                <li><a href="vormen-kleuren.html">Vormen en Kleuren</a></li>
+                <li><a href="opdracht-emoji.html">Opdracht Emoji</a></li>
+                <li><a href="extra-emoji.html">Extra Emoji Generator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Welkom bij P5.js Art!</h2>
+            <div class="imagecontainer">
+              <div><img src="media/images/emojis.jpg" width="400"><p></p></div>
+              <div><img src="media/images/kjetilgolid-2019.jpg" width="400"><p>Kjetil Golid, Studio Apartments, 2019</p></div>
+              <div><img src="media/images/okazz.jpg" width="400"><p>Okazz, 201025a, 2020</p></div>
+              <div><img src="media/images/hype.jpg" width="400"><p></p></div>
+            </div>
+            <p>In deze cursus ga je leren hoe je interactieve kunst kunt maken met P5.js. We beginnen met de basis: vormen en kleuren.</p>
+            
+            <h3>Wat is P5.js?</h3>
+            <p>P5.js is een JavaScript bibliotheek die het maken van creatieve en interactieve programma's makkelijk maakt. Het is gebaseerd op Processing, een programmeertaal die speciaal is ontworpen voor kunstenaars en ontwerpers.</p>
+            
+            <h3>Wat ga je leren?</h3>
+            <ul>
+                <li>Basisvormen tekenen (cirkels, vierkanten, driehoeken)</li>
+                <li>Kleuren gebruiken en mengen</li>
+                <li>Interactie met de muis</li>
+                <li>Animaties maken</li>
+                <li>Je eigen emoji's maken!</li>
+            </ul>
+        </section>
+
+        <section class="examples">
+            <h2>Voorbeeld: Interactieve Vormen</h2>
+            <div class="editor-container">
+                <textarea id="code-editor" class="code-editor">let shapes = [];
+let colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD'];
+let shapeTypes = ['circle', 'square', 'triangle'];
+
+function setup() {
+  createCanvas(400, 400);
+  for (let i = 0; i < 10; i++) {
+    addShape();
+  }
+}
+
+function draw() {
+  background(240);
+  for (let shape of shapes) {
+    // Move towards mouse
+    let dx = mouseX - shape.x;
+    let dy = mouseY - shape.y;
+    shape.x += dx * 0.05;
+    shape.y += dy * 0.05;
+    
+    // Draw shape
+    fill(shape.color);
+    noStroke();
+    if (shape.type === 'circle') {
+      ellipse(shape.x, shape.y, shape.size);
+    } else if (shape.type === 'square') {
+      rect(shape.x - shape.size/2, shape.y - shape.size/2, shape.size, shape.size);
+    } else {
+      triangle(
+        shape.x, shape.y - shape.size/2,
+        shape.x - shape.size/2, shape.y + shape.size/2,
+        shape.x + shape.size/2, shape.y + shape.size/2
+      );
+    }
+  }
+}
+
+function addShape() {
+  shapes.push({
+    x: random(width),
+    y: random(height),
+    size: random(20, 50),
+    color: random(colors),
+    type: random(shapeTypes)
+  });
+}
+
+function mousePressed() {
+  addShape();
+  if (shapes.length > 15) {
+    shapes.shift();
+  }
+}</textarea>
+                <div id="canvas-container" class="canvas-container"></div>
+            </div>
+            <button class="run-button" onclick="runCode()">Run Code</button>
+            <p>Beweeg je muis over het canvas om de vormen te laten bewegen!</p>
+        </section>
+
+        <section class="getting-started">
+            <h2>Aan de slag</h2>
+            <p>Begin met het verkennen van de verschillende pagina's:</p>
+            <ul>
+                <li><a href="vormen-kleuren.html">Vormen en Kleuren</a> - Leer de basisvormen en kleuren kennen</li>
+                <li><a href="opdracht-emoji.html">Opdracht Emoji</a> - Maak je eerste emoji met P5.js</li>
+                <li><a href="extra-emoji.html">Extra Emoji Generator</a> - Ga verder met een geavanceerde emoji generator</li>
+            </ul>
+        </section>
+
+        <section class="tips">
+            <h2>Tips voor Beginners</h2>
+            <ul>
+                <li>Experimenteer met verschillende vormen en kleuren</li>
+                <li>Probeer de code voorbeelden aan te passen</li>
+                <li>Gebruik de P5.js referentie als je vastloopt</li>
+                <li>Deel je creaties met anderen!</li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<script>
+let currentSketch = null;
+
+function runCode() {
+    // Remove existing sketch if any
+    if (currentSketch) {
+        currentSketch.remove();
+    }
+
+    // Clear the canvas container
+    const container = document.getElementById('canvas-container');
+    container.innerHTML = '';
+
+    // Get the code from the editor
+    const code = document.getElementById('code-editor').value;
+
+    // Create a new function from the code
+    const sketchFunction = new Function(`
+        return function(p) {
+            with(p) {
+                ${code}
+            }
+        }
+    `)();
+
+    // Create new p5 instance
+    currentSketch = new p5(sketchFunction, container);
+}
+
+// Run the code initially
+window.onload = runCode;
+</script>
+
+</body>
+</html>
